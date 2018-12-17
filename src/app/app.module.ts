@@ -31,12 +31,20 @@ import {PickListModule} from 'primeng/picklist';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import {TreeModule} from 'primeng/tree';
 import {ChartModule} from 'primeng/chart';
+import { HeaderComponent } from './components/header/header.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    MenuComponent,
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     ChartModule,
