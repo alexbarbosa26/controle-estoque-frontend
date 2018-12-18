@@ -17,6 +17,10 @@ import {InputTextModule} from 'primeng/inputtext';
 import {PasswordModule} from 'primeng/password';
 import {ButtonModule} from 'primeng/button';
 import {CheckboxModule} from 'primeng/checkbox';
+import { CategoriasComponent } from './components/categorias/categorias.component';
+import { ProdutoComponent } from './components/produto/produto.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { SitesComponent } from './components/sites/sites.component';
 
 
 
@@ -27,7 +31,11 @@ import {CheckboxModule} from 'primeng/checkbox';
     MenuComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    CategoriasComponent,
+    ProdutoComponent,
+    UsuarioComponent,
+    SitesComponent
   ],
   imports: [
     routes,

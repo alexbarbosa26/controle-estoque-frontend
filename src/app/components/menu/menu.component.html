@@ -13,10 +13,10 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> Catgeorias</a></li>
-          <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Produtos</a></li>
-          <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Usuários</a></li>
-          <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Sites</a></li>
+          <li><a [routerLink]="['/categorias']"><i class="fa fa-circle-o"></i> Catgeorias</a></li>
+          <li><a [routerLink]="['/produto']"><i class="fa fa-circle-o"></i> Produtos</a></li>
+          <li><a [routerLink]="['/usuario']"><i class="fa fa-circle-o"></i> Usuários</a></li>
+          <li><a [routerLink]="['/sites']"><i class="fa fa-circle-o"></i> Sites</a></li>
         </ul>
       </li>
       <li class="treeview">
@@ -27,7 +27,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Saida Produto</a></li>
+          <li><a [routerLink]="['/trocas']"><i class="fa fa-circle-o"></i> Saida Produto</a></li>
         </ul>
       </li>
     </ul>
