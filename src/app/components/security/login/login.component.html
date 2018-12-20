@@ -1,44 +1,31 @@
-<div style="display: flex; justify-content: center; align-items: center;">
-  <div class="box box-primary" style="max-width: 400px;">
-    <div class="box-header with-border">
-      <h3 class="box-title">Login GEP</h3>
+<div class="login-box">
+  <div class="login-logo">
+    <a ><b>G</b>EP</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Entre para iniciar sua sessão</p>
 
-      <form class="form-horizontal" style="padding: 10px">
-
-        <div class="box-body">
-
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="email">Email</label>
-            <div class="col-sm-10">
-              <input id="email" class="form-control" type="email" placeholder="Email">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="senha">Senha</label>
-            <div class="col-sm-10">
-              <input id="senha" class="form-control" type="password" placeholder="Senha">
-            </div>
-          </div>
-
+    <form method="post">
+      <div class="form-group has-feedback">
+        <input type="email" class="form-control" placeholder="Email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">        
+        <!-- /.col -->
+        <div class="col-xs-4"><br>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
         </div>
+        <!-- /.col -->
+      </div>
+    </form><br>
 
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <p>Esqueci a senha!</p>
-          </div>
-        </div>
-
-        <div class="box-footer">
-          <button style="width: 100%; height: 50px;" pButton type="button" label="Entrar"></button>
-          <br>
-          <br>
-          <button style="width: 100%; height: 50px;" pButton type="button" class="ui-button-danger" label="Limpar"></button>
-
-        </div>
-      </form>
-    </div>
-
+    <a href="#">Esqueci a minha senha</a><br>
 
   </div>
+  <!-- /.login-box-body -->
 </div>
