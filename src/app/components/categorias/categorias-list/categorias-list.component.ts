@@ -1,13 +1,13 @@
-import { CategoriaDTO } from './../../../models/categoria.dto';
-import { CategoriaService } from './../../../services/domain/categoria.service';
 import { Component, OnInit } from '@angular/core';
+import { CategoriaDTO } from '../../../../models/categoria.dto';
+import { CategoriaService } from '../../../../services/domain/categoria.service';
 
 @Component({
-  selector: 'app-categorias',
-  templateUrl: './categorias.component.html',
-  styleUrls: ['./categorias.component.css']
+  selector: 'app-categorias-list',
+  templateUrl: './categorias-list.component.html',
+  styleUrls: ['./categorias-list.component.css']
 })
-export class CategoriasComponent implements OnInit {
+export class CategoriasListComponent implements OnInit {
 
   items: CategoriaDTO[]
 
