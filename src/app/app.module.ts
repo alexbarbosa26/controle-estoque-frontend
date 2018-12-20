@@ -1,8 +1,10 @@
 import { routes } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms'
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,7 +23,7 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
 import { ProdutoComponent } from './components/produto/produto.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { SitesComponent } from './components/sites/sites.component';
-
+import { CategoriaService } from '../services/domain/categoria.service';
 
 
 @NgModule({
@@ -40,6 +42,7 @@ import { SitesComponent } from './components/sites/sites.component';
   imports: [
     routes,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     CommonModule,
     FormsModule,
@@ -48,7 +51,9 @@ import { SitesComponent } from './components/sites/sites.component';
     ButtonModule,
     CheckboxModule    
   ],
-  providers: [],
+  providers: [
+    CategoriaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
