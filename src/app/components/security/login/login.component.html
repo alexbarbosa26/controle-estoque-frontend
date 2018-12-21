@@ -6,19 +6,19 @@
   <div class="login-box-body">
     <p class="login-box-msg">Entre para iniciar sua sessão</p>
 
-    <form method="post">
+    <form>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="creds.email" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="creds.senha" name="senha">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">        
         <!-- /.col -->
         <div class="col-xs-4"><br>
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat" (click)="login()">Entrar</button>
         </div>
         <!-- /.col -->
       </div>
