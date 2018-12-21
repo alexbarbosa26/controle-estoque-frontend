@@ -20,9 +20,7 @@ export class CategoriasListComponent implements OnInit {
       this.items = response;
       console.log(response);
     },
-    error => {
-      console.log(error);
-    });
+    error => {});
   }
 
   ionViewDidLoad(){

@@ -1,4 +1,3 @@
-import { CategoriasListComponent } from './components/categorias/categorias-list/categorias-list.component';
 import { routes } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
@@ -18,11 +17,14 @@ import { ProdutoComponent } from './components/produto/produto.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { SitesComponent } from './components/sites/sites.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
+import { CategoriasListComponent } from './components/categorias/categorias-list/categorias-list.component';
+
 
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 
 import { CategoriaService } from '../services/domain/categoria.service';
+import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { CategoriaService } from '../services/domain/categoria.service';
     UsuarioComponent,
     SitesComponent,
     CategoriasListComponent
+    
   ],
   imports: [
     routes,
@@ -47,10 +50,13 @@ import { CategoriaService } from '../services/domain/categoria.service';
     CommonModule,
     FormsModule,
     ButtonModule,
-    TableModule    
+    TableModule
+        
   ],
   providers: [
-    CategoriaService
+    CategoriaService,
+    ErrorInterceptorProvider
+    
   ],
   bootstrap: [AppComponent]
 })
