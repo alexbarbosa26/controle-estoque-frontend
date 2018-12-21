@@ -8,6 +8,7 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
 import { ProdutoComponent } from './components/produto/produto.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { SitesComponent } from './components/sites/sites.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 export const ROUTES: Routes =[
     {path:'',component:HomeComponent},
@@ -16,7 +17,8 @@ export const ROUTES: Routes =[
     {path:'produto',component:ProdutoComponent},
     {path:'usuario',component:UsuarioComponent},
     {path:'sites',component:SitesComponent},
-    {path:'categorias-list',component:CategoriasListComponent}
+    {path:'categorias-list',component:CategoriasListComponent},
+    {path:'profile',component:ProfileComponent}
 ]
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(ROUTES);

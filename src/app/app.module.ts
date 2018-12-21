@@ -27,6 +27,7 @@ import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from './../services/storage.service';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { StorageService } from './../services/storage.service';
     ProdutoComponent,
     UsuarioComponent,
     SitesComponent,
-    CategoriasListComponent
+    CategoriasListComponent,
+    ProfileComponent
     
   ],
   imports: [
