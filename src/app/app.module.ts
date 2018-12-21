@@ -28,6 +28,7 @@ import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from './../services/storage.service';
 import { UsuarioService } from '../services/domain/usuario.service';
+import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 
 
 @NgModule({
@@ -59,10 +60,12 @@ import { UsuarioService } from '../services/domain/usuario.service';
   ],
   providers: [
     CategoriaService,
+    AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService,
     StorageService,
-    UsuarioService    
+    UsuarioService
+        
   ],
   bootstrap: [AppComponent]
 })
