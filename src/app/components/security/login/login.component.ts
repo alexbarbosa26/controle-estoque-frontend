@@ -1,5 +1,6 @@
 import { CredenciaisDTO } from './../../../../models/credencias.dto';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  creds: CredenciaisDTO ={
+  creds: CredenciaisDTO = {
     email: "",
-    senha:""
+    senha: ""
   };
 
-  constructor() { }
+  constructor(
+    public auth: AuthService
+  ) { }
 
   ngOnInit() {
   }
 
-  login(){
-    console.log(this.creds)
+  login() {
+    this.auth.authenticate(this.creds)
+      .subscribe(response => {
+        console.log(response.headers.get('Authorization'));
+      },
+        error => { }
+      );
   }
 
 }
