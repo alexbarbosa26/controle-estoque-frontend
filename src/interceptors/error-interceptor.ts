@@ -3,11 +3,19 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import { StorageService } from '../services/storage.service';
+import {Message} from 'primeng/components/common/api';
+import {MessageService} from 'primeng/api';
+
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-    constructor(public storage: StorageService) {}
+    msgs: Message[] = [];
+
+    constructor(
+        public storage: StorageService,
+        private messageService: MessageService
+    ) {}
     
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req)
@@ -25,7 +33,11 @@ export class ErrorInterceptor implements HttpInterceptor {
                 console.log(errorObj);
 
                 switch(errorObj.status){
+                    
                     case 403: this.handle403();
+                    break;
+
+                    case 401: this.handle401();
                     break;
                 }
 
@@ -36,6 +48,11 @@ export class ErrorInterceptor implements HttpInterceptor {
     handle403(){
         this.storage.setLocalUser(null);
 
+    }
+
+    handle401(){
+        this.msgs = [];
+        this.msgs.push({severity:'error', summary:'Error Message', detail:'Validation failed'});
     }
 }
 

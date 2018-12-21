@@ -22,6 +22,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {MessageService} from 'primeng/api';
 
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -46,6 +49,7 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
     CategoriasListComponent,
     ProfileComponent
     
+    
   ],
   imports: [
     routes,
@@ -55,7 +59,9 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
     CommonModule,
     FormsModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    MessagesModule,
+    MessageModule
         
   ],
   providers: [
@@ -64,7 +70,8 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
     ErrorInterceptorProvider,
     AuthService,
     StorageService,
-    UsuarioService
+    UsuarioService,
+    MessageService
         
   ],
   bootstrap: [AppComponent]
