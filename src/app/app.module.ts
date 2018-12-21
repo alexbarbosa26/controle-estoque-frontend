@@ -26,6 +26,7 @@ import {TableModule} from 'primeng/table';
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
+import { StorageService } from './../services/storage.service';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { AuthService } from '../services/auth.service';
   providers: [
     CategoriaService,
     ErrorInterceptorProvider,
-    AuthService
+    AuthService,
+    StorageService
     
   ],
   bootstrap: [AppComponent]
