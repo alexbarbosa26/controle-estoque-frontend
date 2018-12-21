@@ -1,6 +1,8 @@
+import { UsuarioDTO } from './../../../models/usuario.dto';
 import { StorageService } from './../../../services/storage.service';
 import { LocalUser } from './../../../models/local-user';
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from '../../../services/domain/usuario.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,16 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  email: string;
+  usuario: UsuarioDTO;
 
   constructor(
-    public storage: StorageService
+    public storage: StorageService,
+    public usuarioService: UsuarioService
   ) { }
 
   ngOnInit() {
     let localUser = this.storage.getLocalUser();
     if(localUser && localUser.email){
-      this.email=localUser.email;
+      this.usuarioService.findByEmail(localUser.email)
+      .subscribe(response => {
+        this.usuario = response;
+
+      },
+    error =>{});
     }
   }
 

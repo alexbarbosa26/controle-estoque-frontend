@@ -18,7 +18,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { SitesComponent } from './components/sites/sites.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { CategoriasListComponent } from './components/categorias/categorias-list/categorias-list.component';
-
+import { ProfileComponent } from './components/profile/profile.component';
 
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
@@ -27,7 +27,7 @@ import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from './../services/storage.service';
-import { ProfileComponent } from './components/profile/profile.component';
+import { UsuarioService } from '../services/domain/usuario.service';
 
 
 @NgModule({
@@ -61,8 +61,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     CategoriaService,
     ErrorInterceptorProvider,
     AuthService,
-    StorageService
-    
+    StorageService,
+    UsuarioService    
   ],
   bootstrap: [AppComponent]
 })
