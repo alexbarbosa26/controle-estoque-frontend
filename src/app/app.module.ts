@@ -1,4 +1,5 @@
 import { routes } from './app.routes';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -61,7 +62,8 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
     ButtonModule,
     TableModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    BrowserAnimationsModule
         
   ],
   providers: [

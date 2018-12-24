@@ -1,58 +1,87 @@
+import { Message } from 'primeng/components/common/api';
 
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import { StorageService } from '../services/storage.service';
-import {Message} from 'primeng/components/common/api';
-import {MessageService} from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-    msgs: Message[] = [];
-
     constructor(
         public storage: StorageService,
         private messageService: MessageService
-    ) {}
-    
+    ) { }
+
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req)
             .catch((error, caught) => {
 
                 let errorObj = error;
-                if(errorObj.error ){
+                if (errorObj.error) {
                     errorObj = errorObj.error;
                 }
-                if(!errorObj.status){
+                if (!errorObj.status) {
                     errorObj = JSON.parse(errorObj);
                 }
 
                 console.log("Erro detectado pelo Interceptor");
                 console.log(errorObj);
 
-                switch(errorObj.status){
-                    
+                switch (errorObj.status) {
+
                     case 403: this.handle403();
-                    break;
+                        break;
 
                     case 401: this.handle401();
-                    break;
+                        break;
+
+                    case 404: this.handle404();
+                        break;
+
+                    default:
+                        this.handleDefaultError(errorObj);
                 }
 
                 return Observable.throw(error);
             }) as any;
     }
 
-    handle403(){
+    handle403() {
         this.storage.setLocalUser(null);
+        this.messageService.add({
+            severity: 'error',
+            summary: 'Erro 403: Acesso negado',
+            detail: 'Você não possui permissão para este acesso'
+        });
 
     }
 
-    handle401(){
-        this.msgs = [];
-        this.msgs.push({severity:'error', summary:'Error Message', detail:'Validation failed'});
+    handle401() {
+        this.messageService.add({
+            severity: 'error',
+            summary: 'Erro 401: falha de autenticação',
+            detail: 'Email ou senha incorretos'
+        });
+    }
+
+    handle404(){
+        this.messageService.add({
+            severity: 'error',
+            summary: 'Erro 404: página não encontrada',
+            detail: ''
+        });
+    }
+
+    handleDefaultError(errorObj) {
+
+        this.messageService.add({
+            severity: 'error',
+            summary: 'Erro ' + errorObj.status + ': ' + errorObj.error,
+            detail: errorObj.message
+        });
     }
 }
 
