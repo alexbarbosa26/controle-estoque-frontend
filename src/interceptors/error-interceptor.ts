@@ -16,6 +16,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     ) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        this.messageService.clear();
         return next.handle(req)
             .catch((error, caught) => {
 
@@ -60,6 +61,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
 
     handle401() {
+
         this.messageService.add({
             severity: 'error',
             summary: 'Erro 401: falha de autenticação',
@@ -67,7 +69,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         });
     }
 
-    handle404(){
+    handle404() {
         this.messageService.add({
             severity: 'error',
             summary: 'Erro 404: página não encontrada',
@@ -75,7 +77,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         });
     }
 
-    handleDefaultError(errorObj) {
+    handleDefaultError(errorObj: { status: string; error: string; message: string; }) {
 
         this.messageService.add({
             severity: 'error',
