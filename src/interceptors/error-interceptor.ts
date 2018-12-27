@@ -51,12 +51,13 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
 
     handle403() {
-        this.storage.setLocalUser(null);
+        
         this.messageService.add({
             severity: 'error',
             summary: 'Erro 403: Acesso negado',
             detail: 'Você não possui permissão para este acesso'
-        });
+        });        
+        this.storage.setLocalUser(null);
 
     }
 

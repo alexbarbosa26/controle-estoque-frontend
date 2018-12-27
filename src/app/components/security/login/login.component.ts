@@ -4,7 +4,7 @@ import { CredenciaisDTO } from './../../../../models/credencias.dto';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/auth.service';
 import { Router } from '@angular/router';
-import {Message} from 'primeng/components/common/api';
+import { SharedService } from 'src/services/shared.service';
 
 
 @Component({
@@ -19,23 +19,41 @@ export class LoginComponent implements OnInit {
     senha: ""
   };
 
+  shared: SharedService;
+
   constructor(
-    public auth: AuthService,
-    public router: Router
-  ) { }
+    private auth: AuthService,
+    private router: Router
+  ) { 
+    this.shared = SharedService.getInstance();
+  }
 
   ngOnInit() {
+    this.auth.refreshToken()
+      .subscribe(response => {
+        this.auth.successfullLogin(response.headers.get('Authorization')); 
+        this.shared.showTemplate.emit(true);       
+        this.router.navigate(['/']);
+      },
+        error => {
+          this.shared.showTemplate.emit(false);       
+        this.router.navigate(['/login']);
+        });
+
   }
 
   login() {
     this.auth.authenticate(this.creds)
       .subscribe(response => {
         this.auth.successfullLogin(response.headers.get('Authorization'));
-        this.router.navigate(['']);
+        this.shared.showTemplate.emit(true);
+        this.router.navigate(['/']);
       },
         error => {
           if (error.status == 403) {
+            this.shared.showTemplate.emit(false);            
             this.router.navigate(['login']);
+            
           }
         });
   }

@@ -5,7 +5,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import { NotifierModule,NotifierOptions } from 'angular-notifier';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +33,7 @@ import { AuthService } from '../services/auth.service';
 import { StorageService } from './../services/storage.service';
 import { UsuarioService } from '../services/domain/usuario.service';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
+import { SharedService } from 'src/services/shared.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +73,8 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
     AuthService,
     StorageService,
     UsuarioService,
-    MessageService
+    MessageService,
+    SharedService
         
   ],
   bootstrap: [AppComponent]
