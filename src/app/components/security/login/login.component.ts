@@ -28,19 +28,7 @@ export class LoginComponent implements OnInit {
     this.shared = SharedService.getInstance();
   }
 
-  ngOnInit() {
-    this.auth.refreshToken()
-      .subscribe(response => {
-        this.auth.successfullLogin(response.headers.get('Authorization')); 
-        this.shared.showTemplate.emit(true);       
-        this.router.navigate(['/']);
-      },
-        error => {
-          this.shared.showTemplate.emit(false);       
-        this.router.navigate(['/login']);
-        });
-
-  }
+  ngOnInit() {}
 
   login() {
     this.auth.authenticate(this.creds)
@@ -51,11 +39,13 @@ export class LoginComponent implements OnInit {
       },
         error => {
           if (error.status == 403) {
-            this.shared.showTemplate.emit(false);            
-            this.router.navigate(['login']);
             
           }
         });
+  }
+
+  logout(){
+    this.auth.logout;
   }
 
 }

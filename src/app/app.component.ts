@@ -27,7 +27,8 @@ export class AppComponent {
       (show: boolean) => this.showTemplate = show
     );
 
-    this.auth.refreshToken()
+    if (this.auth.storage.getLocalUser() != null) {
+      this.auth.refreshToken()
       .subscribe(response => {
         this.auth.successfullLogin(response.headers.get('Authorization'));
         this.shared.showTemplate.emit(true);
@@ -38,6 +39,7 @@ export class AppComponent {
           this.shared.showTemplate.emit(false);
           this.router.navigate(['/login']);
         });
+    }
 
   }
 
@@ -49,6 +51,5 @@ export class AppComponent {
     }
 
   }
-
 }
 

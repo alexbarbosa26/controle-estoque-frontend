@@ -1,3 +1,5 @@
+import { AppComponent } from './app.component';
+import { AuthGuard } from './../services/auth.guard';
 import { CategoriasListComponent } from './components/categorias/categorias-list/categorias-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/security/login/login.component';
@@ -11,14 +13,15 @@ import { SitesComponent } from './components/sites/sites.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 export const ROUTES: Routes =[
-    {path:'',component:HomeComponent},
+    {path:'',component:HomeComponent, canActivate: [AuthGuard]},    
+    {path:'categorias',component:CategoriasComponent, canActivate: [AuthGuard]},
+    {path:'produto',component:ProdutoComponent, canActivate: [AuthGuard]},
+    {path:'usuario',component:UsuarioComponent, canActivate: [AuthGuard]},
+    {path:'sites',component:SitesComponent, canActivate: [AuthGuard]},
+    {path:'categorias-list',component:CategoriasListComponent, canActivate: [AuthGuard]},
+    {path:'profile',component:ProfileComponent, canActivate: [AuthGuard]},
+    {path:'logout',component:AppComponent},
     {path:'login',component:LoginComponent},
-    {path:'categorias',component:CategoriasComponent},
-    {path:'produto',component:ProdutoComponent},
-    {path:'usuario',component:UsuarioComponent},
-    {path:'sites',component:SitesComponent},
-    {path:'categorias-list',component:CategoriasListComponent},
-    {path:'profile',component:ProfileComponent}
 ]
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(ROUTES);

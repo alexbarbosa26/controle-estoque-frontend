@@ -34,6 +34,7 @@ import { StorageService } from './../services/storage.service';
 import { UsuarioService } from '../services/domain/usuario.service';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { SharedService } from 'src/services/shared.service';
+import { AuthGuard } from 'src/services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { SharedService } from 'src/services/shared.service';
     StorageService,
     UsuarioService,
     MessageService,
-    SharedService
+    SharedService,
+    AuthGuard
         
   ],
   bootstrap: [AppComponent]
