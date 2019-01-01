@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutoComponent implements OnInit {
 
-  constructor() { }
+  formulario : FormGroup;
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+
+    this.formulario = this.formBuilder.group({
+        nome: [''],
+        quantidade: ['']
+
+    })
   }
 
 }

@@ -1,6 +1,5 @@
-import { CategoriaDTO } from './../../../models/categoria.dto';
-import { CategoriaService } from './../../../services/domain/categoria.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-categorias',
@@ -9,24 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriasComponent implements OnInit {
 
-  items: CategoriaDTO[]
+  formulario: FormGroup;
 
-  constructor(
-    public  categoriaService: CategoriaService
-  ) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.categoriaService.findAll().subscribe(response =>{
-      this.items = response;
-      console.log(response);
-    },
-    error => {
-      console.log(error);
+    this.formulario = this.formBuilder.group({
+      nome: ['',[Validators.required, Validators.minLength(5), Validators.maxLength(120)]]
     });
-  }
 
-  ionViewDidLoad(){
-    
   }
 
 }

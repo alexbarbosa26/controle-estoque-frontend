@@ -2,21 +2,21 @@
   <div class="box-header with-border">
     <h3 class="box-title">Cadastrar Categorias</h3>
 
-    <form class="form-horizontal" style="padding: 10px">
+    <form [formGroup]="formulario" class="form-horizontal" style="padding: 10px">
 
       <div class="box-body">
 
         <div class="form-group">
           <label class="col-sm-2 control-label" for="nome">Nome: </label>
           <div class="col-sm-10">
-            <input id="nome" class="form-control" type="text" placeholder="Nome da Categoria">
+            <input formControlName="nome" id="nome" class="form-control" type="text" placeholder="Nome da Categoria">
           </div>
         </div>
 
       </div>
 
       <div class="box-footer">
-        <button class="" pButton type="button" label="Cadastrar"></button>
+        <button class="btn btn-primary" type="submit" >Cadastrar</button>
 
       </div>
     </form>
