@@ -1,3 +1,5 @@
+import { CategoriaDTO } from './../../../models/categoria.dto';
+import { CategoriaService } from 'src/services/domain/categoria.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,16 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutoComponent implements OnInit {
 
-  formulario : FormGroup;
-  constructor(private formBuilder: FormBuilder) { }
+  formulario: FormGroup;
+  categoria: CategoriaDTO[];
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private categoriaService: CategoriaService) {
+
+    this.formulario = this.formBuilder.group({
+      nome: [''],
+      quantidade: [''],
+      categoriaCod: ['']
+
+    });
+  }
 
   ngOnInit() {
 
-    this.formulario = this.formBuilder.group({
-        nome: [''],
-        quantidade: ['']
-
-    })
+    this.categoriaService.findAll().subscribe(
+      response => {
+        this.categoria = response;
+        this.formulario.controls.categoriaCod.setValue(this.categoria[0].codigo);
+      }
+    )
   }
 
 }

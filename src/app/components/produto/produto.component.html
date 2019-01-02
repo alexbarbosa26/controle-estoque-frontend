@@ -23,11 +23,8 @@
         <div class="form-group">
           <label class="col-sm-2 control-label" for="categoria">Categoria </label>
           <div class="col-sm-10">
-            <select class="form-control">
-                <option>Selecione</option>
-              <option>Headset</option>
-              <option>Hardware</option>
-              <option>Periféricos</option>
+            <select formControlName="categoriaCod" class="form-control">
+              <option *ngFor="let cat of categoria" [value]="categoria.codigo"> {{cat.nome}}</option>
             </select>
           </div>
         </div>
