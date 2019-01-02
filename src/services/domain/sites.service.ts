@@ -11,7 +11,7 @@ export class SitesService{
 
     }
 
-    findAll(sites_cod: string) : Observable<SitesDTO[]> {
-        return this.http.get<SitesDTO[]>(`${API_CONFIG.baseURL}/sites/${sites_cod}/usuarios`);
+    findAll() : Observable<SitesDTO[]> {
+        return this.http.get<SitesDTO[]>(`${API_CONFIG.baseURL}/sites`);
     }
 }
