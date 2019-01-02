@@ -6,42 +6,48 @@
 
       <div class="box-body">
 
-        <div class="form-group has-feedback">
-          <label class="col-sm-2 control-label" for="matricula">Matrícula: </label>
+        <div [ngClass]="getFromGroupClass(formulario.controls.matricula.errors, formulario.controls.matricula.dirty)">
+          <label class="col-sm-2 control-label" for="matricula">Matrícula*: </label>
           <div class="col-sm-10">
             <input formControlName="matricula" id="matricula" class="form-control" type="text" placeholder="Matrícula do Usuário">
             <span class="fa fa-key form-control-feedback"></span>
+            <span class="help-block" *ngIf="formulario.controls.matricula.errors && formulario.controls.matricula.dirty">Campo obrigátorio!</span>
           </div>
         </div>
 
-        <div class="form-group has-feedback">
-          <label class="col-sm-2 control-label" for="nome">Nome: </label>
+        <div [ngClass]="getFromGroupClass(formulario.controls.nome.errors, formulario.controls.nome.dirty)">
+          <label class="col-sm-2 control-label" for="nome">Nome*: </label>
           <div class="col-sm-10">
             <input formControlName="nome" id="nome" class="form-control" type="text" placeholder="Nome do Usuário">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            <span class="help-block" *ngIf="formulario.controls.nome.errors && formulario.controls.nome.dirty">Campo obrigátorio!</span>
           </div>
         </div>
 
-        <div class="form-group has-feedback">
+        <div [ngClass]="getFromGroupClass(formulario.controls.senha.errors, formulario.controls.senha.dirty)">
           <label class="col-sm-2 control-label" for="senha">Senha: </label>
           <div class="col-sm-10">
             <input formControlName="senha" id="senha" class="form-control" type="password" placeholder="Senha do usuario">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <span class="help-block" *ngIf="formulario.controls.senha.errors && formulario.controls.senha.dirty">Este campo deve conter no mínimo 8 caracteres!</span>
+            
           </div>
         </div>
-        <div class="form-group has-feedback">
+        <div [ngClass]="getFromGroupClass(formulario.controls.confirma.errors, formulario.controls.confirma.dirty)">
           <label class="col-sm-2 control-label" for="confirma">Confirmar Senha: </label>
           <div class="col-sm-10">
             <input formControlName="confirma" id="confirma" class="form-control" type="password" placeholder="Confirmar senha">
-            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <span class="help-block" *ngIf="formulario.controls.confirma.errors && formulario.controls.confirma.dirty">As senhas devem corresponder</span>
           </div>
         </div>
 
-        <div class="form-group has-feedback">
+        <div [ngClass]="getFromGroupClass(formulario.controls.email.errors, formulario.controls.email.dirty)">
           <label class="col-sm-2 control-label" for="email">Email: </label>
           <div class="col-sm-10">
             <input formControlName="email" id="email" class="form-control" type="email" placeholder="Email do usuario">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <span class="help-block" *ngIf="formulario.controls.email.errors && formulario.controls.email.dirty">Campo obrigátorio!</span>
           </div>
         </div>
 
@@ -57,7 +63,7 @@
       </div>
 
       <div class="box-footer">
-        <button class="btn btn-primary" type="submit">Cadastrar</button>
+        <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid">Cadastrar</button>
       </div>
     </form>
   </div>

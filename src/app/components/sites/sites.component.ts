@@ -1,4 +1,4 @@
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,8 +13,16 @@ export class SitesComponent implements OnInit {
 
   ngOnInit() {
     this.formulario=this.formBuilder.group({
-      nome:['']
+      nome:['',[Validators.required,Validators.minLength(5),Validators.maxLength(120)]]
     })
+  }
+
+  getFromGroupClass(isInvalid: boolean, isDirty: any): {} {
+    return{
+      'form-group':true,
+      'has-error' : isInvalid && isDirty,
+      'has-success' : !isInvalid && isDirty
+    }
   }
 
 }
