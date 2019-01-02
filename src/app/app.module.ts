@@ -26,6 +26,7 @@ import {TableModule} from 'primeng/table';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {MessageService} from 'primeng/api';
+import {CarouselModule} from 'primeng/carousel';
 
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -66,7 +67,8 @@ import { SitesService } from 'src/services/domain/sites.service';
     MessagesModule,
     MessageModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CarouselModule
         
   ],
   providers: [
