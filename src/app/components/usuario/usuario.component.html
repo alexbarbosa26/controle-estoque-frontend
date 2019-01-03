@@ -2,7 +2,7 @@
   <div class="box-header with-border">
     <h3 class="box-title">Cadastrar Usuário</h3>
 
-    <form [formGroup]="formulario" class="form-horizontal" style="padding: 10px">
+    <form [formGroup]="formulario" (ngSubmit)="salvar(); $event.preventDefault()" class="form-horizontal" style="padding: 10px">
 
       <div class="box-body">
 
@@ -51,11 +51,11 @@
           </div>
         </div>
 
-        <div class="form-group has-feedback">
+        <div [ngClass]="getFromGroupClass(formulario.controls.codSite.errors, formulario.controls.codSite.dirty)">
           <label class="col-sm-2 control-label" for="site">Site </label>
           <div class="col-sm-10">
-            <select formControlName="siteCod" class="form-control">
-                <option *ngFor="let s of sites" [value]="sites.codigo">{{s.nome}}</option>
+            <select formControlName="codSite" id="site" class="form-control">
+                <option *ngFor="let s of sites" [value]="s.codigo">{{s.nome}}</option>
             </select>
           </div>
         </div>

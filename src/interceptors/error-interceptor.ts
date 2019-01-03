@@ -1,3 +1,4 @@
+import { FieldMessage } from './../models/fieldmessage';
 import { Message } from 'primeng/components/common/api';
 
 import { Injectable } from '@angular/core';
@@ -42,6 +43,9 @@ export class ErrorInterceptor implements HttpInterceptor {
                     case 404: this.handle404();
                         break;
 
+                    case 422: this.handle422(errorObj);
+                        break;
+
                     default:
                         this.handleDefaultError(errorObj);
                 }
@@ -50,13 +54,28 @@ export class ErrorInterceptor implements HttpInterceptor {
             }) as any;
     }
 
-    handle403() {
+    handle422(errorObj: { errors: FieldMessage[]; }) {
+        this.messageService.addAll([
+            { severity: 'error', summary: 'ERRO 422: Validação', detail: this.listErrors(errorObj.errors) }
+        ]);
         
+    }
+
+    listErrors(messages: FieldMessage[]): string {
+        let s: string = '';
+        for (var i = 0; i < messages.length; i++) {
+            s = s + '<p><strong>' + messages[i].fieldName + "</strong>: " + messages[i].message + '</p>';
+        }
+        return s;
+    }
+
+    handle403() {
+
         this.messageService.add({
             severity: 'error',
             summary: 'Erro 403: Acesso negado',
             detail: 'Você não possui permissão para este acesso'
-        });        
+        });
         this.storage.setLocalUser(null);
 
     }
