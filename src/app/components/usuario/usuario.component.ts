@@ -1,6 +1,6 @@
 import { SitesDTO } from 'src/models/sites.dto';
 import { SitesService } from './../../../services/domain/sites.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MustMatch } from 'src/interceptors/must-match.validator';
 import { UsuarioService } from 'src/services/domain/usuario.service';
@@ -65,6 +65,16 @@ export class UsuarioComponent implements OnInit {
       severity: 'success',
       summary: 'Usuário cadastrado com sucesso',
       detail: ''
+    });
+
+    this.formulario = new FormGroup({
+
+      matricula: new FormControl(null),
+      nome:new FormControl(null),
+      senha: new FormControl(null),
+      confirma: new FormControl(null),
+      email: new FormControl(null),
+      codSite: new FormControl(null)
     });
   }
 
