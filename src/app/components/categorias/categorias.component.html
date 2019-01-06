@@ -2,7 +2,7 @@
   <div class="box-header with-border">
     <h3 class="box-title">Cadastrar Categorias</h3>
 
-    <form [formGroup]="formulario" class="form-horizontal" style="padding: 10px">
+    <form [formGroup]="formulario" (ngSubmit)="salvar(); $event.preventDefault()" class="form-horizontal" style="padding: 10px">
 
       <div class="box-body">
 

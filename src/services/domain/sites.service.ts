@@ -14,4 +14,12 @@ export class SitesService{
     findAll() : Observable<SitesDTO[]> {
         return this.http.get<SitesDTO[]>(`${API_CONFIG.baseURL}/sites`);
     }
+    
+    insert(obj: SitesDTO){
+        return this.http.post(`${API_CONFIG.baseURL}/sites`,        
+        obj,{
+            observe: 'response',
+            responseType: 'text'
+        });
+    }
 }

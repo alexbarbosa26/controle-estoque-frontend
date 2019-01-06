@@ -67,15 +67,16 @@ export class UsuarioComponent implements OnInit {
       detail: ''
     });
 
-    this.formulario = new FormGroup({
-
-      matricula: new FormControl(null),
-      nome:new FormControl(null),
-      senha: new FormControl(null),
-      confirma: new FormControl(null),
-      email: new FormControl(null),
-      codSite: new FormControl(null)
-    });
+    this.formulario = this.formBuilder.group({
+      matricula: [null, [Validators.required]],
+      nome: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
+      senha: [null, [Validators.required, Validators.minLength(8)]],
+      confirma: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
+      codSite: [null, [Validators.required]]
+    }, {
+        validator: MustMatch('senha', 'confirma')
+      });
   }
 
 }

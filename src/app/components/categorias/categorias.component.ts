@@ -1,5 +1,7 @@
+import { MessageService } from 'primeng/api';
+import { CategoriaService } from 'src/services/domain/categoria.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-categorias',
@@ -10,14 +12,37 @@ export class CategoriasComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private categoriaService: CategoriaService,
+    private messageService: MessageService
+    ) {
     this.formulario = this.formBuilder.group({
-      nome: ['',[Validators.required, Validators.minLength(5), Validators.maxLength(120)]]
+      nome: [null,[Validators.required, Validators.minLength(5), Validators.maxLength(120)]]
     });
   }
 
   ngOnInit() {
     
+  }
+
+  salvar(){
+    this.categoriaService.insert(this.formulario.value).subscribe(
+      response => {
+        this.showInsertOk();
+    },error => {})
+  }
+
+  showInsertOk(){
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Categoria cadastrada com sucesso !!!',
+      detail: ''
+    });
+
+    this.formulario = this.formBuilder.group({
+      nome: [null,[Validators.required, Validators.minLength(5), Validators.maxLength(120)]]
+    });
   }
 
   getFromGroupClass(isInvalid: boolean, isDirty: any): {} {
