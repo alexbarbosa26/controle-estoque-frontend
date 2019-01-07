@@ -17,7 +17,7 @@ export class SitesComponent implements OnInit {
     private messageService: MessageService
     ) {
       this.formulario=this.formBuilder.group({
-        nome:[null,[Validators.required,Validators.minLength(5),Validators.maxLength(120)]]
+        nome:[null,[Validators.required,Validators.minLength(3),Validators.maxLength(3)]]
       })
      }
 
@@ -37,18 +37,18 @@ export class SitesComponent implements OnInit {
     this.siteService.insert(this.formulario.value).subscribe(
       response => {
         this.showInsertOk();
-    },error => {})
+    },errors => {})
   }
 
   showInsertOk(){
     this.messageService.add({
       severity: 'success',
-      summary: 'Site cadastrada com sucesso !!!',
+      summary: 'Site cadastrado com sucesso !!!',
       detail: ''
     });
 
     this.formulario = this.formBuilder.group({
-      nome: [null,[Validators.required, Validators.minLength(5), Validators.maxLength(120)]]
+      nome: [null,[Validators.required, Validators.minLength(3), Validators.maxLength(3)]]
     });
   }
 

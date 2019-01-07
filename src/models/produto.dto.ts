@@ -1,5 +1,5 @@
 export interface ProdutoDTO{
-    codigo:string,
-    nome:string,
-    quantidade:string
+    codigo:string;
+    nome:string;
+    quantidade:number;
 }

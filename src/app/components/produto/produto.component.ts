@@ -1,7 +1,9 @@
+import { MessageService } from 'primeng/api';
 import { CategoriaDTO } from './../../../models/categoria.dto';
 import { CategoriaService } from 'src/services/domain/categoria.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ProdutoService } from 'src/services/domain/produto.service';
 
 @Component({
   selector: 'app-produto',
@@ -15,12 +17,14 @@ export class ProdutoComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private categoriaService: CategoriaService) {
+    private categoriaService: CategoriaService,
+    private messageService: MessageService,
+    private produtoService: ProdutoService) {
 
     this.formulario = this.formBuilder.group({
-      nome: ['',[Validators.required,Validators.minLength(5),Validators.maxLength(120)]],
-      quantidade: ['',[Validators.required]],
-      categoriaCod: ['',[Validators.required]]
+      nome: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(120)]],
+      quantidade: [null,[Validators.required]],
+      codCategoria: [null,[Validators.required]]
 
     });
   }
@@ -30,7 +34,7 @@ export class ProdutoComponent implements OnInit {
     this.categoriaService.findAll().subscribe(
       response => {
         this.categoria = response;
-        this.formulario.controls.categoriaCod.setValue(this.categoria[0].codigo);
+        this.formulario.controls.codCategoria.setValue(null);
       }
     )
   }
@@ -41,5 +45,30 @@ export class ProdutoComponent implements OnInit {
       'has-error' : isInvalid && isDirty,
       'has-success' : !isInvalid && isDirty
     }
+  }
+
+  salvar(){
+    console.log(this.formulario.value);
+
+    this.produtoService.insert(this.formulario.value).subscribe(
+      response => {
+        this.showInsertOk();
+      },errors =>{}
+    )
+  }
+
+  showInsertOk(){
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Produto cadastrado com sucesso !!!',
+      detail: ''
+    });
+
+    this.formulario = this.formBuilder.group({
+      nome: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(120)]],
+      quantidade: [null,[Validators.required]],
+      codCategoria: [null,[Validators.required]]
+
+    });
   }
 }

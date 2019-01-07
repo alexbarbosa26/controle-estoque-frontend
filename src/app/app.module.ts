@@ -1,3 +1,4 @@
+import { ProdutoService } from 'src/services/domain/produto.service';
 import { routes } from './app.routes';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,6 +28,7 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {MessageService} from 'primeng/api';
 import {CarouselModule} from 'primeng/carousel';
+import {KeyFilterModule} from 'primeng/keyfilter';
 
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -68,7 +70,8 @@ import { SitesService } from 'src/services/domain/sites.service';
     MessageModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    CarouselModule
+    CarouselModule,
+    KeyFilterModule
         
   ],
   providers: [
@@ -81,7 +84,8 @@ import { SitesService } from 'src/services/domain/sites.service';
     MessageService,
     SharedService,
     AuthGuard,
-    SitesService
+    SitesService,
+    ProdutoService
         
   ],
   bootstrap: [AppComponent]

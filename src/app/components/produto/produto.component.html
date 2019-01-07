@@ -2,7 +2,7 @@
   <div class="box-header with-border">
     <h3 class="box-title">Cadastrar Produtos</h3>
 
-    <form class="form-horizontal" style="padding: 10px" [formGroup]="formulario">
+    <form [formGroup]="formulario" class="form-horizontal" (ngSubmit)="salvar(); $event.preventDefault()" style="padding: 10px">
 
       <div class="box-body">
 
@@ -10,23 +10,28 @@
           <label class="col-sm-2 control-label" for="nome">Nome: </label>
           <div class="col-sm-10">
             <input formControlName="nome" id="nome" class="form-control" type="text" placeholder="Nome do Produto">
-            <span class="help-block" *ngIf="formulario.controls.nome.errors && formulario.controls.nome.dirty">Campo obrigátorio</span>
+            <span class="help-block" *ngIf="formulario.controls.nome.errors && formulario.controls.nome.dirty">Campo
+              obrigátorio</span>
           </div>
         </div>
 
         <div [ngClass]="getFromGroupClass(formulario.controls.quantidade.errors, formulario.controls.quantidade.dirty)">
           <label class="col-sm-2 control-label" for="quantidade">Quantidade: </label>
           <div class="col-sm-10">
-            <input formControlName="quantidade" id="quantidade" class="form-control" type="text" placeholder="Quantidade do Produto">
-            <span class="help-block" *ngIf="formulario.controls.quantidade.errors && formulario.controls.quantidade.dirty">Campo obrigátorio</span>
+            <input formControlName="quantidade" id="quantidade" class="form-control" type="text" placeholder="Quantidade do Produto"
+              pKeyFilter="int">
+            <span class="help-block" *ngIf="formulario.controls.quantidade.errors && formulario.controls.quantidade.dirty">Campo
+              obrigátorio</span>
           </div>
         </div>
 
-        <div [ngClass]="getFromGroupClass(formulario.controls.categoriaCod.errors, formulario.controls.categoriaCod.dirty)">
+        <div [ngClass]="getFromGroupClass(formulario.controls.codCategoria.errors, formulario.controls.codCategoria.dirty)">
           <label class="col-sm-2 control-label" for="categoria">Categoria </label>
           <div class="col-sm-10">
-            <select formControlName="categoriaCod" class="form-control">
-              <option *ngFor="let cat of categoria" [value]="categoria.codigo"> {{cat.nome}}</option>
+            <select formControlName="codCategoria" class="form-control" data-placeholder="Selecione">
+              <option *ngFor="let cat of categoria" [value]="cat.codigo">
+                {{cat.nome}}
+              </option>
             </select>
           </div>
         </div>

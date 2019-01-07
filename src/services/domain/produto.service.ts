@@ -14,4 +14,12 @@ export class ProdutoService{
     findAll() : Observable<ProdutoDTO[]> {
         return this.http.get<ProdutoDTO[]>(`${API_CONFIG.baseURL}/produtos`);
     }
+
+    insert(obj: ProdutoDTO){
+        return this.http.post(`${API_CONFIG.baseURL}/produtos`,        
+        obj,{
+            observe: 'response',
+            responseType: 'text'
+        });
+    }
 }
