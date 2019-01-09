@@ -12,6 +12,13 @@
             <b>E-mail</b>
             <a class="pull-right">{{usuario?.email}}</a>
           </li>
+          <li class="list-group-item">
+            
+            <div *ngFor="let valor of usuario?.site">
+                <b>Sites</b>
+              <a class="pull-right" >{{valor.nome}}</a><br/>            
+              </div>
+          </li>
 
         </ul>
       </div>
