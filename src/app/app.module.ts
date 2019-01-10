@@ -30,6 +30,7 @@ import {MessageService} from 'primeng/api';
 import {CarouselModule} from 'primeng/carousel';
 import {KeyFilterModule} from 'primeng/keyfilter';
 
+
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
@@ -39,6 +40,7 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { SharedService } from 'src/services/shared.service';
 import { AuthGuard } from 'src/services/auth.guard';
 import { SitesService } from 'src/services/domain/sites.service';
+import { ProdutoDetailsComponent } from './components/produto/produto-details/produto-details.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { SitesService } from 'src/services/domain/sites.service';
     UsuarioComponent,
     SitesComponent,
     CategoriasListComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProdutoDetailsComponent
     
     
   ],

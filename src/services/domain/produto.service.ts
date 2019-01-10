@@ -22,4 +22,10 @@ export class ProdutoService{
             responseType: 'text'
         });
     }
+
+    findByProdutoCategoriaSite(categoria_id:string, site_id:string): Observable<ProdutoDTO[]>{
+
+        return this.http.get<ProdutoDTO[]>(`${API_CONFIG.baseURL}/produtos/?sites=${site_id}&categorias=${categoria_id}`);
+
+    }
 }

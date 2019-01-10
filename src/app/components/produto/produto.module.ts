@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 
 import { ProdutoRoutingModule } from './produto-routing.module';
 import { CategoriaService } from 'src/services/domain/categoria.service';
+import { ProdutoDetailsComponent } from './produto-details/produto-details.component';
 
 @NgModule({
-  declarations: [ProdutoComponent],
+  declarations: [ProdutoComponent, ProdutoDetailsComponent],
   imports: [
     CommonModule,
     ProdutoRoutingModule

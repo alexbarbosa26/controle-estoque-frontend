@@ -11,6 +11,7 @@ import { ProdutoComponent } from './components/produto/produto.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { SitesComponent } from './components/sites/sites.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProdutoDetailsComponent } from './components/produto/produto-details/produto-details.component';
 
 export const ROUTES: Routes =[
     {path:'',component:HomeComponent, canActivate: [AuthGuard]},    
@@ -19,6 +20,7 @@ export const ROUTES: Routes =[
     {path:'usuario',component:UsuarioComponent, canActivate: [AuthGuard]},
     {path:'sites',component:SitesComponent, canActivate: [AuthGuard]},
     {path:'categorias-list',component:CategoriasListComponent, canActivate: [AuthGuard]},
+    {path:'produto-details/:categoria_id/:site_id',component:ProdutoDetailsComponent, canActivate: [AuthGuard]},
     {path:'profile',component:ProfileComponent, canActivate: [AuthGuard]},
     {path:'logout',component:AppComponent},
     {path:'login',component:LoginComponent},
