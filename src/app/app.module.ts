@@ -8,6 +8,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -29,6 +30,10 @@ import {MessageModule} from 'primeng/message';
 import {MessageService} from 'primeng/api';
 import {CarouselModule} from 'primeng/carousel';
 import {KeyFilterModule} from 'primeng/keyfilter';
+import {DataViewModule} from 'primeng/dataview';
+import {PanelModule} from 'primeng/panel';
+import {DialogModule} from 'primeng/dialog';
+
 
 
 import { CategoriaService } from '../services/domain/categoria.service';
@@ -74,7 +79,10 @@ import { ProdutoDetailsComponent } from './components/produto/produto-details/pr
     BrowserAnimationsModule,
     ReactiveFormsModule,
     CarouselModule,
-    KeyFilterModule
+    KeyFilterModule,
+    DataViewModule,
+    PanelModule,
+    DialogModule
         
   ],
   providers: [

@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ProdutoDetailsComponent implements OnInit {
 
   items: ProdutoDTO[];
+  selectedValor: ProdutoDTO;
+  displayDialog: boolean;
 
   constructor(
     private produtoService: ProdutoService,
@@ -29,11 +31,20 @@ export class ProdutoDetailsComponent implements OnInit {
 
   findProdutoCategoriaSite(categoria_id: string, site_id: string) {
     this.produtoService.findByProdutoCategoriaSite(categoria_id, site_id)
-      .subscribe(response => {
+      .subscribe((response: ProdutoDTO[]) => {
         this.items = response
-                
+
       }, error => { });
   }
 
+  selectValor(event: Event, car: ProdutoDTO) {
+    this.selectedValor = car;
+    this.displayDialog = true;
+    event.preventDefault();
+  }
+
+  onDialogHide() {
+    this.selectedValor = null;
+  }
 
 }

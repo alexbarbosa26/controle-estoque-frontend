@@ -1,20 +1,64 @@
-<p-table [value]="items">
-  <ng-template pTemplate="header">
-      <tr>
-          <th>Codigo</th>
-          <th>Nome do Produto</th>
-          <th>QTD</th>
-          <th>Site</th>
-          
-      </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-valor>
-      <tr>
-          <td>{{valor?.codigo}}</td>
-          <td>{{valor?.nome}}</td>
-          <td>{{valor?.quantidade}}</td>
-          <td>{{valor?.site}}</td>
+<p-dataView #dv [value]="items" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="brand" [sortField]="sortField"
+    [sortOrder]="sortOrder">
+    <p-header>
+        <div class="ui-helper-clearfix">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-4"></div>
+                <div class="ui-g-6 ui-md-4 filter-container"></div>
+                <div class="ui-g-6 ui-md-4" style="text-align:right">
+                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+            </div>
+        </div>
+    </p-header>
+    <ng-template let-valor pTemplate="listItem">
+        <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+            <div class="ui-g-12 ui-md-3" style="text-align:center">
+                <img src="assets/img/prod{{valor?.codigo}}.png" width="200">
+            </div>
+            <div class="ui-g-12 ui-md-8 car-details">
+                <div class="ui-g">
+                    <div class="ui-g-2 ui-sm-6">Código: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{valor?.codigo}}</b></div>
 
-      </tr>
-  </ng-template>
-</p-table>
+                    <div class="ui-g-2 ui-sm-6">Nome: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{valor?.nome}}</b></div>
+
+                    <div class="ui-g-2 ui-sm-6">QTD: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{valor?.quantidade}}</b></div>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-md-1 search-icon">
+                <button pButton type="button" icon="pi pi-search" (click)="selectValor($event, valor)"></button>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template let-valor pTemplate="gridItem">
+        <div style="padding:.5em" class="ui-g-12 ui-md-3">
+            <p-panel [header]="valor?.nome" [style]="{'text-align':'center'}">
+                <img src="assets/img/prod{{valor?.codigo}}.png" width="60">
+                <div class="car-detail">QTD - {{valor?.quantidade}}</div>
+                <hr class="ui-widget-content" style="border-top:0">
+                <button pButton type="button" icon="pi pi-search" (click)="selectValor($event, valor)" style="margin-top:0"></button>
+            </p-panel>
+        </div>
+    </ng-template>
+</p-dataView>
+
+<p-dialog header="Detalhes dos Produtos" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '225px'}"
+    (onAfterHide)="onDialogHide()">
+    <div class="ui-g" *ngIf="selectedValor">
+        <div class="ui-g-12" style="text-align:center">
+                <img src="assets/img/prod{{selectedValor?.codigo}}.png" width="60">
+        </div>
+        <div class="ui-g-4">Código: </div>
+        <div class="ui-g-8">{{selectedValor.codigo}}</div>
+
+        <div class="ui-g-4">Nome: </div>
+        <div class="ui-g-8">{{selectedValor.nome}}</div>
+
+        <div class="ui-g-4">QTD: </div>
+        <div class="ui-g-8">{{selectedValor.quantidade}}</div>
+
+    </div>
+</p-dialog>
