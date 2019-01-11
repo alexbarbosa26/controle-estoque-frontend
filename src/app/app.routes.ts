@@ -12,6 +12,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { SitesComponent } from './components/sites/sites.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProdutoDetailsComponent } from './components/produto/produto-details/produto-details.component';
+import { CartComponent } from './components/cart/cart.component';
 
 export const ROUTES: Routes =[
     {path:'',component:HomeComponent, canActivate: [AuthGuard]},    
@@ -24,6 +25,7 @@ export const ROUTES: Routes =[
     {path:'profile',component:ProfileComponent, canActivate: [AuthGuard]},
     {path:'logout',component:AppComponent},
     {path:'login',component:LoginComponent},
+    {path:'cart',component:CartComponent, canActivate: [AuthGuard]},
 ]
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(ROUTES);

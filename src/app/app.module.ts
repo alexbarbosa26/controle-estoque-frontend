@@ -1,4 +1,3 @@
-import { ProdutoService } from 'src/services/domain/produto.service';
 import { routes } from './app.routes';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,8 +5,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +19,8 @@ import { SitesComponent } from './components/sites/sites.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { CategoriasListComponent } from './components/categorias/categorias-list/categorias-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProdutoDetailsComponent } from './components/produto/produto-details/produto-details.component';
+import { CartComponent } from './components/cart/cart.component';
 
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
@@ -34,8 +33,6 @@ import {DataViewModule} from 'primeng/dataview';
 import {PanelModule} from 'primeng/panel';
 import {DialogModule} from 'primeng/dialog';
 
-
-
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
@@ -45,7 +42,9 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { SharedService } from 'src/services/shared.service';
 import { AuthGuard } from 'src/services/auth.guard';
 import { SitesService } from 'src/services/domain/sites.service';
-import { ProdutoDetailsComponent } from './components/produto/produto-details/produto-details.component';
+import { CartService } from 'src/services/domain/cart.service';
+import { ProdutoService } from 'src/services/domain/produto.service';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +60,8 @@ import { ProdutoDetailsComponent } from './components/produto/produto-details/pr
     SitesComponent,
     CategoriasListComponent,
     ProfileComponent,
-    ProdutoDetailsComponent
+    ProdutoDetailsComponent,
+    CartComponent,
     
     
   ],
@@ -96,7 +96,8 @@ import { ProdutoDetailsComponent } from './components/produto/produto-details/pr
     SharedService,
     AuthGuard,
     SitesService,
-    ProdutoService
+    ProdutoService,
+    CartService
         
   ],
   bootstrap: [AppComponent]

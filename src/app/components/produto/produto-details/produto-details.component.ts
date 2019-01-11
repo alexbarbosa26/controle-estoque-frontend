@@ -1,7 +1,8 @@
 import { ProdutoService } from 'src/services/domain/produto.service';
 import { ProdutoDTO } from 'src/models/produto.dto';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from 'src/services/domain/cart.service';
 
 @Component({
   selector: 'app-produto-details',
@@ -16,7 +17,9 @@ export class ProdutoDetailsComponent implements OnInit {
 
   constructor(
     private produtoService: ProdutoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cartService: CartService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -45,6 +48,11 @@ export class ProdutoDetailsComponent implements OnInit {
 
   onDialogHide() {
     this.selectedValor = null;
+  }
+
+  addToCart(itemProduto:ProdutoDTO){
+    this.cartService.addProduto(itemProduto);
+    this.router.navigate(['cart'])
   }
 
 }

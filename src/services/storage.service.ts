@@ -1,26 +1,44 @@
 import { Injectable } from '../../node_modules/@angular/core';
 import { STORAGE_KEYS } from '../config/storage-keys.config';
 import { LocalUser } from '../models/local-user';
+import { Cart } from 'src/models/cart';
 
 @Injectable()
-export class StorageService{
+export class StorageService {
 
-    getLocalUser(): LocalUser{
+    getLocalUser(): LocalUser {
         let usr = localStorage.getItem(STORAGE_KEYS.localUser);
-        if(usr==null){
+        if (usr == null) {
             return null;
-        }else{
+        } else {
             return JSON.parse(usr);
         }
 
     }
 
-    setLocalUser(obj : LocalUser){
-        if(obj ==null){
+    setLocalUser(obj: LocalUser) {
+        if (obj == null) {
             localStorage.removeItem(STORAGE_KEYS.localUser);
-        }else{
+        } else {
             localStorage.setItem(STORAGE_KEYS.localUser, JSON.stringify(obj));
         }
 
-    } 
+    }
+
+    getCart(): Cart {
+        let str = localStorage.getItem(STORAGE_KEYS.cart);
+        if (str != null) {
+            return JSON.parse(str);
+        } else {
+            return null;
+        }
+    }
+
+    setCart(obj: Cart) {
+        if (obj != null) {
+            localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(obj));
+        } else {
+            localStorage.removeItem(STORAGE_KEYS.cart);
+        }
+    }
 }
