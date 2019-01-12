@@ -31,7 +31,7 @@ import {CarouselModule} from 'primeng/carousel';
 import {KeyFilterModule} from 'primeng/keyfilter';
 import {DataViewModule} from 'primeng/dataview';
 import {PanelModule} from 'primeng/panel';
-import {DialogModule} from 'primeng/dialog';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -82,7 +82,7 @@ import { ProdutoService } from 'src/services/domain/produto.service';
     KeyFilterModule,
     DataViewModule,
     PanelModule,
-    DialogModule
+    NgxSpinnerModule
         
   ],
   providers: [

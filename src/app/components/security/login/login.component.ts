@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/auth.service';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/services/shared.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -23,14 +24,16 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private router: Router
-  ) { 
+    private router: Router,
+    private spinner: NgxSpinnerService
+  ) {
     this.shared = SharedService.getInstance();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   login() {
+    this.spinner.show();
     this.auth.authenticate(this.creds)
       .subscribe(response => {
         this.auth.successfullLogin(response.headers.get('Authorization'));
@@ -39,12 +42,18 @@ export class LoginComponent implements OnInit {
       },
         error => {
           if (error.status == 403) {
-            
+
           }
         });
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 2000);
+
   }
 
-  logout(){
+  logout() {
     this.auth.logout;
   }
 
