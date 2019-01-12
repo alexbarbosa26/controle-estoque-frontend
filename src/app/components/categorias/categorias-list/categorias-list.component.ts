@@ -34,7 +34,7 @@ export class CategoriasListComponent implements OnInit {
     if (localUser && localUser.email) {
       this.usuarioService.findByEmail(localUser.email)
         .subscribe(response => {
-          this.usuario = response;
+          this.usuario = response as UsuarioDTO;
 
         },
           error => {

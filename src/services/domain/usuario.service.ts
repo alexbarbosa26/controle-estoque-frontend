@@ -13,9 +13,9 @@ export class UsuarioService{
         public storage: StorageService
     ){}
 
-    findByEmail(email:string) : Observable<UsuarioDTO>{
+    findByEmail(email:string){
 
-        return this.http.get<UsuarioDTO>(`${API_CONFIG.baseURL}/usuarios/email?value=${email}`);
+        return this.http.get(`${API_CONFIG.baseURL}/usuarios/email?value=${email}`);
 
     }
 

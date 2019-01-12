@@ -12,31 +12,12 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  usuario: UsuarioDTO;
   
   constructor(
-    private cartService: CartService,
-    private storage: StorageService,
-    private usuarioService: UsuarioService,
-    private router: Router
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
-    let localUser = this.storage.getLocalUser();
-    if (localUser && localUser.email) {
-      this.usuarioService.findByEmail(localUser.email)
-        .subscribe(response => {
-          this.usuario = response;
-
-        },
-          error => {
-            if (error.status == 403) {
-              this.router.navigate(['login']);
-            }
-          });
-    } else {
-      this.router.navigate(['login']);
-    }
   }
 
   total(){
