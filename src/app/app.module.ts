@@ -46,6 +46,7 @@ import { AuthGuard } from 'src/services/auth.guard';
 import { SitesService } from 'src/services/domain/sites.service';
 import { CartService } from 'src/services/domain/cart.service';
 import { ProdutoService } from 'src/services/domain/produto.service';
+import { TrocaService } from 'src/services/domain/troca.service';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { ProdutoService } from 'src/services/domain/produto.service';
     AuthGuard,
     SitesService,
     ProdutoService,
-    CartService
+    CartService,
+    TrocaService
         
   ],
   bootstrap: [AppComponent]

@@ -43,4 +43,4 @@
         </div>
     </ng-template>
 </p-dataView>
-<button label="Finalizar" pButton type="button" (click)="nextPage()"></button>
+<button *ngIf="total() > 0" label="Finalizar" pButton type="button" (click)="nextPage()"></button>

@@ -1,3 +1,4 @@
+import { TrocaService } from 'src/services/domain/troca.service';
 import { CartService } from 'src/services/domain/cart.service';
 import { CartItem } from 'src/models/cart-item';
 import { TrocasDTO } from 'src/models/trocas.dto';
@@ -20,30 +21,45 @@ export class OrderConfirmationComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private trocaService:TrocaService
   ) {
-
-    this.route.params.subscribe(params=> console.log(params))
-    
-    
-    
+    let teste = this.route.params.subscribe(params=> console.log(params))
   }
 
   ngOnInit() {
     
-    this.trocas = this.route.snapshot.params[`troca`];
+    let cod = this.route.snapshot.params[`troca`];
     
     this.cartItems = this.cartService.getCart().items;
-    console.log(this.cartItems)
-    this.usuarioService.findById(this.trocas)
+    
+    this.usuarioService.findById(cod)
       .subscribe(response => {
         this.usuario = response as UsuarioDTO;
+
+        let cart = this.cartService.getCart();
+
+          this.trocas = {
+            usuario: { codigo: response['codigo'] },
+            itens: cart.items.map(x => { return { quantidadeTroca: x.quantidade, produto: { codigo: x.produto.codigo } } })
+          }
       });
 
   }
 
   total(){
     return this.cartService.total();
+  }
+
+  checkout(){
+    console.log(this.trocas)
+    this.trocaService.insert(this.trocas)
+    .subscribe(response=>{
+      this.cartService.createOrClearCart();
+
+      console.log(response.headers.get('location'))
+    },error=>{})
+
   }
 
 }
