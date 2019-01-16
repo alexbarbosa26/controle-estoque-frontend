@@ -1,8 +1,11 @@
+import { UsuarioService } from './../../../services/domain/usuario.service';
+import { StorageService } from 'src/services/storage.service';
 import { ProdutoDTO } from 'src/models/produto.dto';
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/models/cart-item';
-import {  Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { CartService } from 'src/services/domain/cart.service';
+import { TrocasDTO } from 'src/models/trocas.dto';
 
 @Component({
   selector: 'app-cart',
@@ -11,42 +14,67 @@ import { CartService } from 'src/services/domain/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  items:CartItem[];
+  items: CartItem[];
   loading: boolean;
+  troca: TrocasDTO;
 
   constructor(
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private storage: StorageService,
+    private usuarioService: UsuarioService
   ) { }
 
   ngOnInit() {
-       this.loadCart();
-       this.loading = true;
+    this.loadCart();
+    this.loadCartProdutos();
+    this.loading = true;
   }
 
-  loadCart(){
+  loadCart() {
     let cart = this.cartService.getCart();
-    this.items = cart.items; 
+    this.items = cart.items;
   }
 
-  removeItem(produto: ProdutoDTO){
+  loadCartProdutos() {
+    let localUser = this.storage.getLocalUser();
+
+    if (localUser && localUser.email) {
+      this.usuarioService.findByEmail(localUser.email)
+        .subscribe(response => {
+          let cart = this.cartService.getCart();
+
+          this.troca = {
+            usuario: { codigo: response['codigo'] },
+            itens: cart.items.map(x => { return { quantidadeTroca: x.quantidade, produto: { codigo: x.produto.codigo } } })
+          }
+        });
+
+    }
+  }
+
+  removeItem(produto: ProdutoDTO) {
     this.items = this.cartService.removeProduto(produto).items;
   }
 
-  increaseQuantity(produto: ProdutoDTO){
+  increaseQuantity(produto: ProdutoDTO) {
     this.items = this.cartService.increaseQuantity(produto).items;
   }
 
-  decreaseItem(produto: ProdutoDTO){
+  decreaseItem(produto: ProdutoDTO) {
     this.items = this.cartService.decreaseQuantity(produto).items;
   }
 
-  total(){
+  total() {
     return this.cartService.total();
   }
 
-  goOn(){
+  goOn() {
     this.router.navigate(['categorias-list'])
-}
+  }
+
+  nextPage() {
+    this.router.navigate(['order-confirmation',this.troca.usuario.codigo])
+  }
 
 }

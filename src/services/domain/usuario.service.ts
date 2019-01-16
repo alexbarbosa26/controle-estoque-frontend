@@ -13,8 +13,12 @@ export class UsuarioService{
         public storage: StorageService
     ){}
 
-    findByEmail(email:string){
+    findById(codigo:any){
+        return this.http.get(`${API_CONFIG.baseURL}/usuarios/${codigo}`);
 
+    }
+
+    findByEmail(email:string){
         return this.http.get(`${API_CONFIG.baseURL}/usuarios/email?value=${email}`);
 
     }

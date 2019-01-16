@@ -21,6 +21,7 @@ import { CategoriasListComponent } from './components/categorias/categorias-list
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProdutoDetailsComponent } from './components/produto/produto-details/produto-details.component';
 import { CartComponent } from './components/cart/cart.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
@@ -32,6 +33,7 @@ import {KeyFilterModule} from 'primeng/keyfilter';
 import {DataViewModule} from 'primeng/dataview';
 import {PanelModule} from 'primeng/panel';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import {CardModule} from 'primeng/card';
 
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -44,7 +46,6 @@ import { AuthGuard } from 'src/services/auth.guard';
 import { SitesService } from 'src/services/domain/sites.service';
 import { CartService } from 'src/services/domain/cart.service';
 import { ProdutoService } from 'src/services/domain/produto.service';
-
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { ProdutoService } from 'src/services/domain/produto.service';
     ProfileComponent,
     ProdutoDetailsComponent,
     CartComponent,
+    OrderConfirmationComponent
     
     
   ],
@@ -82,7 +84,8 @@ import { ProdutoService } from 'src/services/domain/produto.service';
     KeyFilterModule,
     DataViewModule,
     PanelModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    CardModule
         
   ],
   providers: [

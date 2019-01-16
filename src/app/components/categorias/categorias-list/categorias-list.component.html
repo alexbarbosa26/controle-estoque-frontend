@@ -1,23 +1,25 @@
 <div class="content-section implementation">
   <p-carousel headerText="Categorias de Produtos" [value]="items">
     <ng-template let-item pTemplate="item">
-      <div class="ui-grid ui-grid-responsive" *ngFor="let valor of usuario?.site">
-        <div class="ui-grid-row">
-                <div class="ui-grid-col-12"><img src="assets/img/cat{{item.codigo}}.jpg" width="200"></div>
-            
-        </div>
-        <div class="ui-grid-row">
-          <div class="ui-grid-col-12">{{item.nome}}</div>
-        </div>
+      <div *ngFor="let valor of usuario?.site">
+        <div class="ui-grid ui-grid-responsive">
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12"><img src="assets/img/cat{{item.codigo}}.jpg" width="200"></div>
 
-        <div class="ui-grid-row">
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12">{{item.nome}}</div>
+          </div>
+
+          <div class="ui-grid-row">
             <div class="ui-grid-col-12"></div>
           </div>
-        
-        <div class="ui-grid-row">
-          <div class="ui-grid-col-12">
-            <button label="Visualizar" type="button" pButton icon="pi pi-search" (click)="showProdutos(item.codigo, valor.codigo)"></button>
-            
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12">
+              <button label="Visualizar" type="button" pButton icon="pi pi-search" (click)="showProdutos(item.codigo, valor.codigo)"></button>
+
+            </div>
           </div>
         </div>
       </div>
