@@ -8,7 +8,7 @@
                 </div>
                 <div class="ui-g-6 ui-md-4 filter-container">
                     <div style="position:relative; text-align: center">
-                            <button label="Itens" pButton type="button" icon="pi pi-plus" (click)="goOn()"></button>
+                        <button label="Itens" pButton type="button" icon="pi pi-plus" (click)="goOn()"></button>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,9 @@
                         <div class="nolinebreakQTD">
                             <p>{{item.quantidade}}</p>
                         </div>
-                        <i (click)="increaseQuantity(item.produto)" class="nolinebreak pi pi-plus-circle" style="font-size: 2em; color:#34A835;"></i>
+                        <div *ngIf="item.quantidade != item.produto.quantidade">
+                            <i (click)="increaseQuantity(item.produto)" class="nolinebreak pi pi-plus-circle" style="font-size: 2em; color:#34A835;"></i>
+                        </div>
                     </div>
 
                 </div>

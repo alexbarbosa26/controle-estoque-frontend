@@ -1,15 +1,17 @@
-<p-card header="Confirmação de Troca" styleClass="ui-card-shadow">
+<p-card header="Confirmação de Troca" styleClass="ui-card-shadow" *ngIf="!codTroca">
   <p-header>
   </p-header>
 
   <div *ngFor="let item of cartItems" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
-    <div class="container" >
-      <div class="row" >
+    <div class="container">
+      <div class="row">
         <div class="col col-lg-2"><img src="assets/img/prod{{item.produto.codigo}}.png" width="100"></div>
         <div class="col col-lg-2">
           <h4>{{item.produto.nome}}</h4>
         </div>
-        <div class="col col-lg-2"><h5>QTD: {{item.quantidade}}</h5></div>
+        <div class="col col-lg-2">
+          <h5>QTD: {{item.quantidade}}</h5>
+        </div>
       </div>
     </div>
   </div>
@@ -18,8 +20,8 @@
     <h4>{{total()}}</h4>
   </p-footer>
 </p-card>
-<br/>
-<p-card header="Usuário" styleClass="ui-card-shadow">
+<br />
+<p-card header="Usuário" styleClass="ui-card-shadow" *ngIf="!codTroca">
   <p-header>
 
   </p-header>
@@ -33,6 +35,12 @@
 
   <p-footer>
     <button (click)="checkout()" pButton type="button" label="Salvar" icon="pi pi-check" style="margin-right: .25em"></button>
-    <button pButton type="button" label="Cancelar" icon="pi pi-times" class="ui-button-secondary"></button>
+    <button (click)="backCart()" pButton type="button" label="Voltar no Carrinho" icon="pi pi-times" class="ui-button-secondary"></button>
+  </p-footer>
+</p-card>
+
+<p-card *ngIf="codTroca">
+  <p-footer>
+      <button (click)="backHome()" pButton type="button" label="Página Inicial" icon="pi pi-check" style="margin-right: .25em"></button>
   </p-footer>
 </p-card>

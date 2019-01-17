@@ -12,9 +12,11 @@ export class TrocaService{
 
     insert(obj: TrocasDTO){
         return this.http.post(`${API_CONFIG.baseURL}/trocas`,        
-        obj,{
+        obj,
+        {
             observe: 'response',
             responseType: 'text'
-        });
-    }
+        }
+    );
+}
 }

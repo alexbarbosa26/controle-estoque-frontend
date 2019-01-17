@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         });
 
     setTimeout(() => {
-      /** spinner ends after 5 seconds */
+      /** spinner ends after 2 seconds */
       this.spinner.hide();
     }, 2000);
 
