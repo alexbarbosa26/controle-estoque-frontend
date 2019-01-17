@@ -1,10 +1,10 @@
 import { routes } from './app.routes';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,17 +23,18 @@ import { ProdutoDetailsComponent } from './components/produto/produto-details/pr
 import { CartComponent } from './components/cart/cart.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
-import {ButtonModule} from 'primeng/button';
-import {TableModule} from 'primeng/table';
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
-import {MessageService} from 'primeng/api';
-import {CarouselModule} from 'primeng/carousel';
-import {KeyFilterModule} from 'primeng/keyfilter';
-import {DataViewModule} from 'primeng/dataview';
-import {PanelModule} from 'primeng/panel';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { MessageService } from 'primeng/api';
+import { CarouselModule } from 'primeng/carousel';
+import { KeyFilterModule } from 'primeng/keyfilter';
+import { DataViewModule } from 'primeng/dataview';
+import { PanelModule } from 'primeng/panel';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import {CardModule} from 'primeng/card';
+import { CardModule } from 'primeng/card';
+import {ChartModule} from 'primeng/chart';
 
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -47,6 +48,7 @@ import { SitesService } from 'src/services/domain/sites.service';
 import { CartService } from 'src/services/domain/cart.service';
 import { ProdutoService } from 'src/services/domain/produto.service';
 import { TrocaService } from 'src/services/domain/troca.service';
+import { DashboardService } from 'src/services/domain/dashboard.service';
 
 @NgModule({
   declarations: [
@@ -65,8 +67,8 @@ import { TrocaService } from 'src/services/domain/troca.service';
     ProdutoDetailsComponent,
     CartComponent,
     OrderConfirmationComponent
-    
-    
+
+
   ],
   imports: [
     routes,
@@ -86,8 +88,9 @@ import { TrocaService } from 'src/services/domain/troca.service';
     DataViewModule,
     PanelModule,
     NgxSpinnerModule,
-    CardModule
-        
+    CardModule,
+    ChartModule
+
   ],
   providers: [
     CategoriaService,
@@ -102,8 +105,9 @@ import { TrocaService } from 'src/services/domain/troca.service';
     SitesService,
     ProdutoService,
     CartService,
-    TrocaService
-        
+    TrocaService,
+    DashboardService
+
   ],
   bootstrap: [AppComponent]
 })

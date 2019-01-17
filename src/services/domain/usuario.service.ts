@@ -22,6 +22,10 @@ export class UsuarioService{
         return this.http.get(`${API_CONFIG.baseURL}/usuarios/email?value=${email}`);
 
     }
+    findByEmailDash(email:string): Observable<UsuarioDTO[]>{
+        return this.http.get<UsuarioDTO[]>(`${API_CONFIG.baseURL}/usuarios/email?value=${email}`);
+
+    }
 
     insert(obj: UsuarioDTO){
         return this.http.post(`${API_CONFIG.baseURL}/usuarios`,        

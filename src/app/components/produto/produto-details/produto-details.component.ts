@@ -55,4 +55,8 @@ export class ProdutoDetailsComponent implements OnInit {
     this.router.navigate(['cart'])
   }
 
+  backCategorias(){
+    this.router.navigate(['categorias-list'])
+  }
+
 }
