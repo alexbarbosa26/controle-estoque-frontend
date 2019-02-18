@@ -33,7 +33,7 @@ export class AppComponent {
     this.refreshTokenUser();
 
     setTimeout(() => {
-      /** spinner ends after 5 seconds */
+      /** spinner ends after 2 seconds */
       this.spinner.hide();
     }, 2000);
   }

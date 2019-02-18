@@ -28,6 +28,21 @@
         <div [ngClass]="getFromGroupClass(formulario.controls.codCategoria.errors, formulario.controls.codCategoria.dirty)">
           <label class="col-sm-2 control-label" for="categoria">Categoria </label>
           <div class="col-sm-10">
+            <p-listbox [options]="cars" [(ngModel)]="selectedCar" [listStyle]="{'max-height':'250px'}">
+              <ng-template let-car pTemplate="item">
+                <div class="ui-helper-clearfix">
+                  <img src="assets/showcase/images/demo/car/{{car.label}}.png" style="display:inline-block;margin:5px 0 0 5px"
+                    width="48">
+                  <span style="float:right;margin:20px 10px 0 0">{{car.value}}</span>
+                </div>
+              </ng-template>
+            </p-listbox>
+          </div>
+        </div>
+
+        <div [ngClass]="getFromGroupClass(formulario.controls.codCategoria.errors, formulario.controls.codCategoria.dirty)">
+          <label class="col-sm-2 control-label" for="categoria">Categoria </label>
+          <div class="col-sm-10">
             <select formControlName="codCategoria" class="form-control" data-placeholder="Selecione">
               <option *ngFor="let cat of categoria" [value]="cat.codigo">
                 {{cat.nome}}

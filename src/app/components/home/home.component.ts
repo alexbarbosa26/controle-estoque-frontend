@@ -1,5 +1,5 @@
+import { SitesDTO } from './../../../models/sites.dto';
 import { StorageService } from 'src/services/storage.service';
-import { ProdutoDTO } from 'src/models/produto.dto';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'src/services/domain/dashboard.service';
@@ -28,7 +28,12 @@ export class HomeComponent implements OnInit {
     barChartDataV: any;
     options: any;
     usuario: UsuarioDTO;
-    teste:[]
+    categoria: any;
+    item: Array<string[]>
+    codUser:SitesDTO[]
+    nome: any
+    qtd: any[] = []
+    resultado:any;
 
     constructor(
         private dashboardService: DashboardService,
@@ -48,21 +53,30 @@ export class HomeComponent implements OnInit {
         this.usuarioService.findByEmailDash(user.email)
             .subscribe(response => {
 
-                
-                let codUser:any=1
-                this.dashboardService.totalPorCategoria(codUser)
-                    .subscribe(resp => {
-                        this.teste=resp[''];
+                this.codUser = response['site']
+                var cod:any = this.codUser.map(x=>x.codigo)
+
+                this.dashboardService.totalPorCategoria(cod)
+                    .subscribe((resp: any) => {
+
+                        var lab = new Array();
+                        var dat =new Array();
+                        
+                        for(var i=0; i<resp.length; i++){
+                            lab.push(resp[i][0])
+                            dat.push(resp[i][1])
+                        }                        
+
                         this.barChartDataV = {
-                            labels: this.teste.map(x=>x[0]),
+                            labels: lab,
                             datasets: [{
                                 label: 'QTD',
-                                data: this.teste.map(x=>x[1]),
+                                data: dat,
                                 borderColor: '#2272B4',
                                 backgroundColor: "#2555A3"
                             }]
                         }
-                        console.log(this.barChartDataV)
+
                         this.options = {
                             scales: {
                                 yAxes: [{
@@ -92,7 +106,6 @@ export class HomeComponent implements OnInit {
                             legend: {
                                 position: 'bottom',
                                 labels: {
-                                    // This more specific font property overrides the global property
                                     fontColor: 'black',
                                     defaultFontSize: 12
                                 }
@@ -104,6 +117,8 @@ export class HomeComponent implements OnInit {
             });
 
     }
+
+
     graficoBarra() {
         this.dashboardService.totalPorProduto()
             .subscribe(response => {

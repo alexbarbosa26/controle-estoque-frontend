@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/services/domain/cart.service';
-import { StorageService } from 'src/services/storage.service';
-import { UsuarioService } from 'src/services/domain/usuario.service';
-import { UsuarioDTO } from 'src/models/usuario.dto';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',

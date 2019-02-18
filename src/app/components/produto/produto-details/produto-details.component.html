@@ -46,7 +46,7 @@
                 <img src="assets/img/prod{{valor?.codigo}}.png" width="60">
                 <div *ngIf="valor?.quantidade !=0 " class="car-detail">QTD - {{valor?.quantidade}}</div>
                 <hr class="ui-widget-content" style="border-top:0">
-                <button *ngIf="valor?.quantidade !=0" label="Adicionar" pButton type="button" icon="pi pi-plus" (click)="selectValor($event, valor)"
+                <button *ngIf="valor?.quantidade !=0" label="Adicionar" pButton type="button" icon="pi pi-plus" (click)="addToCart(valor)"
                     style="margin-top:0"></button>
                 <p *ngIf="valor?.quantidade == 0" style="color:#e91224;">Produto Indisponível</p>
             </p-panel>

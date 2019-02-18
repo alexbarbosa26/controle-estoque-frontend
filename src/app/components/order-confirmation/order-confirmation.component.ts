@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { TrocaService } from 'src/services/domain/troca.service';
 import { CartService } from 'src/services/domain/cart.service';
 import { CartItem } from 'src/models/cart-item';
@@ -60,9 +59,9 @@ export class OrderConfirmationComponent implements OnInit {
       .subscribe((response) => {
         this.cartService.createOrClearCart();
 
-        this.codTroca=response.status;
-        
-        if(response.status==201){
+        this.codTroca = response.status;
+
+        if (response.status == 201) {
           this.messageService.add({
             severity: 'success',
             summary: 'Troca regitrada com sucesso!!!',
@@ -83,12 +82,12 @@ export class OrderConfirmationComponent implements OnInit {
     return location.substring(position + 1, location.length);
   }
 
-  backHome(){
+  backHome() {
     this.messageService.clear();
     this.router.navigate([''])
   }
 
-  backCart(){
+  backCart() {
     this.router.navigate(['cart'])
   }
 
