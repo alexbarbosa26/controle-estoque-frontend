@@ -16,7 +16,7 @@
     <ng-template let-valor pTemplate="listItem">
         <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
             <div class="ui-g-12 ui-md-3" style="text-align:center">
-                <img src="assets/img/prod{{valor?.codigo}}.png" width="100">
+                <img src="assets/img/{{valor?.imagem}}.png" width="100">
             </div>
             <div class="ui-g-12 ui-md-8 car-details">
                 <div class="ui-g">
@@ -43,7 +43,7 @@
     <ng-template let-valor pTemplate="gridItem">
         <div style="padding:.5em" class="ui-g-12 ui-md-3">
             <p-panel [header]="valor?.nome" [style]="{'text-align':'center'}">
-                <img src="assets/img/prod{{valor?.codigo}}.png" width="60">
+                <img src="assets/img/{{valor?.imagem}}.png" width="60">
                 <div *ngIf="valor?.quantidade !=0 " class="car-detail">QTD - {{valor?.quantidade}}</div>
                 <hr class="ui-widget-content" style="border-top:0">
                 <button *ngIf="valor?.quantidade !=0" label="Adicionar" pButton type="button" icon="pi pi-plus" (click)="addToCart(valor)"

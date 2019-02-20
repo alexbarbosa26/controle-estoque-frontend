@@ -36,6 +36,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { CardModule } from 'primeng/card';
 import { ChartModule } from 'primeng/chart';
 import {ListboxModule} from 'primeng/listbox';
+import {DropdownModule} from 'primeng/dropdown';
 
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -91,7 +92,8 @@ import { DashboardService } from 'src/services/domain/dashboard.service';
     NgxSpinnerModule,
     CardModule,
     ChartModule,
-    ListboxModule
+    ListboxModule,
+    DropdownModule
 
   ],
   providers: [

@@ -12,7 +12,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class AppComponent {
 
-  showTemplate: boolean = false;
+  showTemplate = false;
   public shared: SharedService;
 
   constructor(
@@ -23,6 +23,7 @@ export class AppComponent {
     this.shared = SharedService.getInstance();
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
     this.spinner.show();
 
@@ -60,7 +61,7 @@ export class AppComponent {
     if (this.auth.storage.getLocalUser() == null) {
 
     } else {
-      return 'content-wrapper'
+      return 'content-wrapper';
     }
 
   }

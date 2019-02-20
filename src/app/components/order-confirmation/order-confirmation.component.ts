@@ -32,7 +32,7 @@ export class OrderConfirmationComponent implements OnInit {
 
   ngOnInit() {
 
-    let cod = this.route.snapshot.params[`troca`];
+    const cod = this.route.snapshot.params[`troca`];
 
     this.cartItems = this.cartService.getCart().items;
 
@@ -40,12 +40,12 @@ export class OrderConfirmationComponent implements OnInit {
       .subscribe(response => {
         this.usuario = response as UsuarioDTO;
 
-        let cart = this.cartService.getCart();
+        const cart = this.cartService.getCart();
 
         this.trocas = {
           usuario: { codigo: response['codigo'] },
-          itens: cart.items.map(x => { return { quantidadeTroca: x.quantidade, produto: { codigo: x.produto.codigo } } })
-        }
+          itens: cart.items.map(x => ({ quantidadeTroca: x.quantidade, produto: { codigo: x.produto.codigo } }))
+        };
       });
 
   }
@@ -61,34 +61,34 @@ export class OrderConfirmationComponent implements OnInit {
 
         this.codTroca = response.status;
 
-        if (response.status == 201) {
+        if (response.status === 201) {
           this.messageService.add({
             severity: 'success',
-            summary: 'Troca regitrada com sucesso!!!',
+            summary: 'Troca registrada com sucesso!!!',
             detail: 'Verifique seu email'
           });
         }
 
       }, error => {
-        if (error.status == 403) {
-          this.router.navigate(['login'])
+        if (error.status === 403) {
+          this.router.navigate(['login']);
         }
-      })
+      });
 
   }
 
   private extractId(location: string): string {
-    let position = location.lastIndexOf('/')
+    const position = location.lastIndexOf('/');
     return location.substring(position + 1, location.length);
   }
 
   backHome() {
     this.messageService.clear();
-    this.router.navigate([''])
+    this.router.navigate(['']);
   }
 
   backCart() {
-    this.router.navigate(['cart'])
+    this.router.navigate(['cart']);
   }
 
 }

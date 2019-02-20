@@ -24,10 +24,10 @@ export class ProdutoDetailsComponent implements OnInit {
 
   ngOnInit() {
 
-    let categoria_id: string = this.route.snapshot.params[`categoria_id`]
-    let site_id: string = this.route.snapshot.params[`site_id`]
+    const categoria_id: string = this.route.snapshot.params[`categoria_id`];
+    const site_id: string = this.route.snapshot.params[`site_id`];
 
-    if (categoria_id != undefined && site_id != undefined) {
+    if (categoria_id !== undefined && site_id !== undefined) {
       this.findProdutoCategoriaSite(categoria_id, site_id);
     }
   }
@@ -35,7 +35,7 @@ export class ProdutoDetailsComponent implements OnInit {
   findProdutoCategoriaSite(categoria_id: string, site_id: string) {
     this.produtoService.findByProdutoCategoriaSite(categoria_id, site_id)
       .subscribe((response: ProdutoDTO[]) => {
-        this.items = response
+        this.items = response;
 
       }, error => { });
   }
@@ -50,13 +50,13 @@ export class ProdutoDetailsComponent implements OnInit {
     this.selectedValor = null;
   }
 
-  addToCart(itemProduto:ProdutoDTO){
+  addToCart(itemProduto: ProdutoDTO) {
     this.cartService.addProduto(itemProduto);
-    this.router.navigate(['cart'])
+    this.router.navigate(['cart']);
   }
 
-  backCategorias(){
-    this.router.navigate(['categorias-list'])
+  backCategorias() {
+    this.router.navigate(['categorias-list']);
   }
 
 }

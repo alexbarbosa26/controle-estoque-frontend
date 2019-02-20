@@ -29,11 +29,11 @@ export class HomeComponent implements OnInit {
     options: any;
     usuario: UsuarioDTO;
     categoria: any;
-    item: Array<string[]>
-    codUser:SitesDTO[]
-    nome: any
-    qtd: any[] = []
-    resultado:any;
+    item: Array<string[]>;
+    codUser: SitesDTO[];
+    nome: any;
+    qtd: any[] = [];
+    resultado: any;
 
     constructor(
         private dashboardService: DashboardService,
@@ -49,23 +49,23 @@ export class HomeComponent implements OnInit {
     }
 
     graficoBarraV() {
-        let user = this.storage.getLocalUser();
+        const user = this.storage.getLocalUser();
         this.usuarioService.findByEmailDash(user.email)
             .subscribe(response => {
 
-                this.codUser = response['site']
-                var cod:any = this.codUser.map(x=>x.codigo)
+                this.codUser = response['site'];
+                const cod: any = this.codUser.map(x => x.codigo);
 
                 this.dashboardService.totalPorCategoria(cod)
                     .subscribe((resp: any) => {
 
-                        var lab = new Array();
-                        var dat =new Array();
-                        
-                        for(var i=0; i<resp.length; i++){
-                            lab.push(resp[i][0])
-                            dat.push(resp[i][1])
-                        }                        
+                        const lab = new Array();
+                        const dat = new Array();
+
+                        for (let i = 0; i < resp.length; i++) {
+                            lab.push(resp[i][0]);
+                            dat.push(resp[i][1]);
+                        }
 
                         this.barChartDataV = {
                             labels: lab,
@@ -73,9 +73,9 @@ export class HomeComponent implements OnInit {
                                 label: 'QTD',
                                 data: dat,
                                 borderColor: '#2272B4',
-                                backgroundColor: "#2555A3"
+                                backgroundColor: '#2555A3'
                             }]
-                        }
+                        };
 
                         this.options = {
                             scales: {
@@ -113,7 +113,7 @@ export class HomeComponent implements OnInit {
                             }
 
                         };
-                    })
+                    });
             });
 
     }
@@ -130,12 +130,12 @@ export class HomeComponent implements OnInit {
                             label: 'Estoque',
                             data: response.map(x => x.quantidade),
                             borderColor: '#1E88E5',
-                            backgroundColor: "#2555A3"
+                            backgroundColor: '#2555A3'
 
                         }
                     ]
 
-                }
+                };
                 this.options = {
                     scales: {
                         yAxes: [{
@@ -174,7 +174,7 @@ export class HomeComponent implements OnInit {
 
                 };
 
-            })
+            });
     }
 
 
