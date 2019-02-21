@@ -1,3 +1,4 @@
+import { SitesDTO } from 'src/models/sites.dto';
 import { Component, OnInit } from '@angular/core';
 import { CategoriaDTO } from '../../../../models/categoria.dto';
 import { CategoriaService } from '../../../../services/domain/categoria.service';
@@ -15,30 +16,23 @@ export class CategoriasListComponent implements OnInit {
 
   items: CategoriaDTO[];
   usuario: UsuarioDTO;
+  sites: SitesDTO[];
 
   constructor(
     public storage: StorageService,
     public usuarioService: UsuarioService,
     public  categoriaService: CategoriaService,
     public router: Router
-  ) {}
-
-  ngOnInit() {
-    this.categoriaService.findAll().subscribe(response =>{
-      this.items = response;
-      console.log(response);
-    },
-    error => {});
-
-    let localUser = this.storage.getLocalUser();
+  ) {
+    const localUser = this.storage.getLocalUser();
     if (localUser && localUser.email) {
       this.usuarioService.findByEmail(localUser.email)
         .subscribe(response => {
-          this.usuario = response as UsuarioDTO;
-
+          this.sites = response['site'];
+          console.log(this.sites);
         },
           error => {
-            if (error.status == 403) {
+            if (error.status === 403) {
               this.router.navigate(['login']);
             }
           });
@@ -47,7 +41,15 @@ export class CategoriasListComponent implements OnInit {
     }
   }
 
-  showProdutos(categoria_id:string, site_id:string){
+  ngOnInit() {
+    this.categoriaService.findAll().subscribe(response => {
+      this.items = response;
+      console.log(response);
+    },
+    error => {});
+  }
+
+  showProdutos(categoria_id: string, site_id: string) {
     console.log(categoria_id, site_id);
 
     this.router.navigate(['/produto-details', categoria_id, site_id]);
