@@ -51,6 +51,8 @@ import { CartService } from 'src/services/domain/cart.service';
 import { ProdutoService } from 'src/services/domain/produto.service';
 import { TrocaService } from 'src/services/domain/troca.service';
 import { DashboardService } from 'src/services/domain/dashboard.service';
+import { ClientesComponent } from './clientes/clientes.component';
+import { CelulasComponent } from './components/celulas/celulas.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { DashboardService } from 'src/services/domain/dashboard.service';
     ProfileComponent,
     ProdutoDetailsComponent,
     CartComponent,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    ClientesComponent,
+    CelulasComponent
 
 
   ],
