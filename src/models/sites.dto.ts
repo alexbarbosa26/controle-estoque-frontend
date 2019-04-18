@@ -1,4 +1,4 @@
-export interface SitesDTO{
-    codigo: string,
-    nome:string
+export interface SitesDTO {
+    codigo: string;
+    nome: string;
 }

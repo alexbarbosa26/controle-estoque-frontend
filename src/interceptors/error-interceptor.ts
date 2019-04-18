@@ -3,6 +3,7 @@ import { Message } from 'primeng/components/common/api';
 
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from '@angular/common/http';
+// tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs/Rx';
 import { StorageService } from '../services/storage.service';
 import { MessageService } from 'primeng/api';
@@ -29,7 +30,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                     errorObj = JSON.parse(errorObj);
                 }
 
-                console.log("Erro detectado pelo Interceptor");
+                console.log('Erro detectado pelo Interceptor');
                 console.log(errorObj);
 
                 switch (errorObj.status) {
@@ -58,13 +59,13 @@ export class ErrorInterceptor implements HttpInterceptor {
         this.messageService.addAll([
             { severity: 'error', summary: 'ERRO 422: Validação', detail: this.listErrors(errorObj.errors) }
         ]);
-        
+
     }
 
     listErrors(messages: FieldMessage[]): string {
-        let s: string = '';
-        for (var i = 0; i < messages.length; i++) {
-            s = s + '<p><strong>' + messages[i].fieldName + "</strong>: " + messages[i].message + '</p>';
+        let s = '';
+        for (let i = 0; i < messages.length; i++) {
+            s = s + '<p><strong>' + messages[i].fieldName + '</strong>: ' + messages[i].message + '</p>';
         }
         return s;
     }

@@ -1,3 +1,3 @@
-export interface RefDTO{
-    codigo:string;
+export interface RefDTO {
+    codigo: string;
 }

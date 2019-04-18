@@ -1,5 +1,5 @@
-export const STORAGE_KEYS={
+export const STORAGE_KEYS = {
 
-    localUser:"localUser",
-    cart: "carrinhoTroca"
-}
+    localUser: 'localUser',
+    cart: 'carrinhoTroca'
+};

@@ -4,8 +4,8 @@ export interface UsuarioDTO {
     matricula: string;
     nome: string;
     email: string;
-    site:SitesDTO[];
-    perfis:string;
+    site: SitesDTO[];
+    perfis: string;
 
     imageUrl?: string;
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from '@angular/common/http';
+// tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs/Rx';
 import { StorageService } from '../services/storage.service';
 import { API_CONFIG } from '../config/api.config';
@@ -11,17 +12,17 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        let localUser = this.storage.getLocalUser();
+        const localUser = this.storage.getLocalUser();
 
-        let N = API_CONFIG.baseURL.length;
-        let requestToAPI = req.url.substring(0, N) == API_CONFIG.baseURL;
+        const N = API_CONFIG.baseURL.length;
+        const requestToAPI = req.url.substring(0, N) === API_CONFIG.baseURL;
         if (localUser) {
             const authReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + localUser.token) });
 
-            return next.handle(authReq)
+            return next.handle(authReq);
         } else {
 
-            return next.handle(req)
+            return next.handle(req);
         }
     }
 }

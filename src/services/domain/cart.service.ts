@@ -11,7 +11,7 @@ export class CartService {
     ) { }
 
     createOrClearCart(): Cart {
-        let cart: Cart = { items: [] };
+        const cart: Cart = { items: [] };
         this.storage.setCart(cart);
 
         return cart;
@@ -26,9 +26,9 @@ export class CartService {
     }
 
     addProduto(produto: ProdutoDTO): Cart {
-        let cart = this.getCart();
-        let position = cart.items.findIndex(x => x.produto.codigo == produto.codigo);
-        if (position == -1) {
+        const cart = this.getCart();
+        const position = cart.items.findIndex(x => x.produto.codigo === produto.codigo);
+        if (position === -1) {
             cart.items.push({ quantidade: 1, produto: produto });
         }
         this.storage.setCart(cart);
@@ -36,9 +36,9 @@ export class CartService {
     }
 
     removeProduto(produto: ProdutoDTO): Cart {
-        let cart = this.getCart();
-        let position = cart.items.findIndex(x => x.produto.codigo == produto.codigo);
-        if (position != -1) {
+        const cart = this.getCart();
+        const position = cart.items.findIndex(x => x.produto.codigo === produto.codigo);
+        if (position !== -1) {
             cart.items.splice(position, 1);
         }
         this.storage.setCart(cart);
@@ -46,9 +46,9 @@ export class CartService {
     }
 
     increaseQuantity(produto: ProdutoDTO): Cart {
-        let cart = this.getCart();
-        let position = cart.items.findIndex(x => x.produto.codigo == produto.codigo);
-        if (position != -1) {
+        const cart = this.getCart();
+        const position = cart.items.findIndex(x => x.produto.codigo === produto.codigo);
+        if (position !== -1) {
             cart.items[position].quantidade++;
         }
         this.storage.setCart(cart);
@@ -57,8 +57,8 @@ export class CartService {
 
     decreaseQuantity(produto: ProdutoDTO): Cart {
         let cart = this.getCart();
-        let position = cart.items.findIndex(x => x.produto.codigo == produto.codigo);
-        if (position != -1) {
+        const position = cart.items.findIndex(x => x.produto.codigo === produto.codigo);
+        if (position !== -1) {
             cart.items[position].quantidade--;
             if (cart.items[position].quantidade < 1) {
                 cart = this.removeProduto(produto);
@@ -68,10 +68,10 @@ export class CartService {
         }
     }
 
-    total():number{
-        let cart = this.getCart();
+    total(): number {
+        const cart = this.getCart();
         let sum = 0;
-        for(var i=0; i<cart.items.length; i++){
+        for (let i = 0; i < cart.items.length; i++) {
             sum += cart.items[i].quantidade;
         }
         return sum;

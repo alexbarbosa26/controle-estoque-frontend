@@ -8,20 +8,20 @@ import { StorageService } from './storage.service';
 import { JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable()
-export class AuthService{
+export class AuthService {
 
     jwtHelper: JwtHelperService = new JwtHelperService();
 
     constructor(
         public http: HttpClient,
         public storage: StorageService,
-        private cartService:CartService
-        ){}
+        private cartService: CartService
+        ) {}
 
-    authenticate(creds: CredenciaisDTO){
+    authenticate(creds: CredenciaisDTO) {
 
-       return this.http.post(`${API_CONFIG.baseURL}/login`, 
-        creds,{
+       return this.http.post(`${API_CONFIG.baseURL}/login`,
+        creds, {
             observe: 'response',
             responseType: 'text'
         });
@@ -29,7 +29,7 @@ export class AuthService{
 
     refreshToken() {
         return this.http.post(
-            `${API_CONFIG.baseURL}/auth/refresh_token`, 
+            `${API_CONFIG.baseURL}/auth/refresh_token`,
             {},
             {
                 observe: 'response',
@@ -37,18 +37,18 @@ export class AuthService{
             });
 }
 
-    successfullLogin(authorizationValue : string){
+    successfullLogin(authorizationValue: string) {
 
-        let tok = authorizationValue.substring(7);
-        let user : LocalUser={
+        const tok = authorizationValue.substring(7);
+        const user: LocalUser = {
           token: tok,
           email: this.jwtHelper.decodeToken(tok).sub
         };
         this.storage.setLocalUser(user);
         this.cartService.createOrClearCart();
       }
-    
-      logout(){
+
+      logout() {
         this.storage.setLocalUser(null);
       }
 

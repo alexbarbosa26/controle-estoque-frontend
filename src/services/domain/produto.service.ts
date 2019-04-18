@@ -1,6 +1,7 @@
 import { API_CONFIG } from './../../config/api.config';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+// tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs/Rx';
 import { ProdutoDTO } from 'src/models/produto.dto';
 

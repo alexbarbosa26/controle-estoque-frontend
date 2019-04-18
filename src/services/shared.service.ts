@@ -9,7 +9,7 @@ export class SharedService {
   showTemplate = new EventEmitter<boolean>();
 
   constructor() {
-    return SharedService.intance = SharedService.intance || this
+    return SharedService.intance = SharedService.intance || this;
   }
 
   public static getInstance() {

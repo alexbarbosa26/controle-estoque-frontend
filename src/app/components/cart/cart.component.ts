@@ -32,22 +32,22 @@ export class CartComponent implements OnInit {
   }
 
   loadCart() {
-    let cart = this.cartService.getCart();
+    const cart = this.cartService.getCart();
     this.items = cart.items;
   }
 
   loadCartProdutos() {
-    let localUser = this.storage.getLocalUser();
+    const localUser = this.storage.getLocalUser();
 
     if (localUser && localUser.email) {
       this.usuarioService.findByEmail(localUser.email)
         .subscribe(response => {
-          let cart = this.cartService.getCart();
+          const cart = this.cartService.getCart();
 
           this.troca = {
             usuario: { codigo: response['codigo'] },
-            itens: cart.items.map(x => { return { quantidadeTroca: x.quantidade, produto: { codigo: x.produto.codigo } } })
-          }
+            itens: cart.items.map(x => ({ quantidadeTroca: x.quantidade, produto: { codigo: x.produto.codigo } }))
+          };
         });
 
     }
@@ -70,11 +70,11 @@ export class CartComponent implements OnInit {
   }
 
   goOn() {
-    this.router.navigate(['categorias-list'])
+    this.router.navigate(['categorias-list']);
   }
 
   nextPage() {
-    this.router.navigate(['order-confirmation',this.troca.usuario.codigo])
+    this.router.navigate(['order-confirmation', this.troca.usuario.codigo]);
   }
 
 }
