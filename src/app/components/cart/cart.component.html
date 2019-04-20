@@ -1,5 +1,5 @@
-<p-dataView #dv [value]="items" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="brand" [sortField]="sortField"
-    [sortOrder]="sortOrder" emptyMessage="Sua lista de trocas está vazia">
+<p-dataView #dv [value]="items" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="brand"
+    [sortField]="sortField" [sortOrder]="sortOrder" emptyMessage="Sua lista de trocas está vazia">
     <p-header>
         <div class="ui-helper-clearfix">
             <div class="ui-g">
@@ -25,15 +25,26 @@
                     <div class="ui-g-2 ui-sm-6">Nome: </div>
                     <div class="ui-g-10 ui-sm-6"><b>{{item.produto.nome}}</b></div>
 
-                    <div class="ui-g-2 ui-sm-6">QTD: </div>
-
+                    <div class="ui-g-2 ui-sm-6">Nº INC: </div>
                     <div class="ui-g-10 ui-sm-6">
-                        <i (click)="decreaseItem(item.produto)" class="nolinebreak pi pi-minus-circle" style="font-size: 2em; color:#34A835;"></i>
+                        <input *ngIf="item.numeroChamado == '' " name="numeroChamado" type="text" pInputText [(ngModel)]="numeroChamado">
+                        <span>{{item.numeroChamado}}</span>
+                        <i *ngIf="item.numeroChamado == '' " (click)="chamado(item.produto)" class="pi pi-plus-circle"
+                        style="font-size: 2em; color:#34A835;"></i>
+
+                    </div>
+
+                    <div *ngIf="item.numeroChamado != '' " class="ui-g-2 ui-sm-6">QTD: </div>
+
+                    <div *ngIf="item.numeroChamado != '' " class="ui-g-10 ui-sm-6">
+                        <i (click)="decreaseItem(item.produto)" class="nolinebreak pi pi-minus-circle"
+                            style="font-size: 2em; color:#34A835;"></i>
                         <div class="nolinebreakQTD">
                             <p>{{item.quantidade}}</p>
                         </div>
                         <div *ngIf="item.quantidade != item.produto.quantidade">
-                            <i (click)="increaseQuantity(item.produto)" class="nolinebreak pi pi-plus-circle" style="font-size: 2em; color:#34A835;"></i>
+                            <i (click)="increaseQuantity(item.produto)" class="nolinebreak pi pi-plus-circle"
+                                style="font-size: 2em; color:#34A835;"></i>
                         </div>
                     </div>
 

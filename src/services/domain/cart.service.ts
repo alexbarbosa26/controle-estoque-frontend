@@ -1,3 +1,4 @@
+import { CartComponent } from './../../app/components/cart/cart.component';
 import { ProdutoDTO } from './../../models/produto.dto';
 import { StorageService } from 'src/services/storage.service';
 import { Injectable } from '@angular/core';
@@ -6,6 +7,7 @@ import { Cart } from 'src/models/cart';
 @Injectable()
 export class CartService {
 
+    
     constructor(
         private storage: StorageService
     ) { }
@@ -29,7 +31,7 @@ export class CartService {
         const cart = this.getCart();
         const position = cart.items.findIndex(x => x.produto.codigo === produto.codigo);
         if (position === -1) {
-            cart.items.push({ quantidade: 1, produto: produto });
+            cart.items.push({ quantidade: 0, numeroChamado: '', produto: produto });
         }
         this.storage.setCart(cart);
         return cart;
@@ -44,7 +46,7 @@ export class CartService {
         this.storage.setCart(cart);
         return cart;
     }
-
+    
     increaseQuantity(produto: ProdutoDTO): Cart {
         const cart = this.getCart();
         const position = cart.items.findIndex(x => x.produto.codigo === produto.codigo);
@@ -76,4 +78,5 @@ export class CartService {
         }
         return sum;
     }
+    
 }

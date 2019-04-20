@@ -22,6 +22,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ProdutoDetailsComponent } from './components/produto/produto-details/produto-details.component';
 import { CartComponent } from './components/cart/cart.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
+import { CelulasComponent } from './components/celulas/celulas.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
 
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -35,8 +37,9 @@ import { PanelModule } from 'primeng/panel';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CardModule } from 'primeng/card';
 import { ChartModule } from 'primeng/chart';
-import {ListboxModule} from 'primeng/listbox';
-import {DropdownModule} from 'primeng/dropdown';
+import { ListboxModule } from 'primeng/listbox';
+import { DropdownModule } from 'primeng/dropdown';
+import {InputTextModule} from 'primeng/inputtext';
 
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -51,8 +54,6 @@ import { CartService } from 'src/services/domain/cart.service';
 import { ProdutoService } from 'src/services/domain/produto.service';
 import { TrocaService } from 'src/services/domain/troca.service';
 import { DashboardService } from 'src/services/domain/dashboard.service';
-import { ClientesComponent } from './clientes/clientes.component';
-import { CelulasComponent } from './components/celulas/celulas.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { CelulasComponent } from './components/celulas/celulas.component';
     CardModule,
     ChartModule,
     ListboxModule,
-    DropdownModule
+    DropdownModule,
+    InputTextModule
 
   ],
   providers: [

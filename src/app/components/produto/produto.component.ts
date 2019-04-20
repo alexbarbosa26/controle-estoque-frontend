@@ -101,7 +101,6 @@ export class ProdutoComponent implements OnInit {
   }
 
   salvar() {
-    console.log(this.formulario.value);
 
     this.produtoService.insert(this.formulario.value).subscribe(
       response => {

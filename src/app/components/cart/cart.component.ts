@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
   items: CartItem[];
   loading: boolean;
   troca: TrocasDTO;
+  numeroChamado: string;
 
   constructor(
     private cartService: CartService,
@@ -46,8 +47,8 @@ export class CartComponent implements OnInit {
 
           this.troca = {
             usuario: { codigo: response['codigo'] },
-            itens: cart.items.map(x => ({ quantidadeTroca: x.quantidade, produto: { codigo: x.produto.codigo } }))
-          };
+            itens: cart.items.map(x => ({ quantidadeTroca: x.quantidade, numeroChamado: x.numeroChamado, produto: { codigo: x.produto.codigo } }))
+          };          
         });
 
     }
@@ -60,6 +61,17 @@ export class CartComponent implements OnInit {
   increaseQuantity(produto: ProdutoDTO) {
     this.items = this.cartService.increaseQuantity(produto).items;
   }
+
+  chamado(produto: ProdutoDTO) {
+    const cart = this.cartService.getCart();
+    const position = cart.items.findIndex(x => x.produto.codigo == produto.codigo);
+    if(position !== -1) {
+        cart.items[position].numeroChamado = this.numeroChamado;
+    }
+    this.storage.setCart(cart);
+    this.items = this.cartService.increaseQuantity(produto).items;
+    return cart;
+}
 
   decreaseItem(produto: ProdutoDTO) {
     this.items = this.cartService.decreaseQuantity(produto).items;
@@ -74,6 +86,7 @@ export class CartComponent implements OnInit {
   }
 
   nextPage() {
+    console.log(this.troca)
     this.router.navigate(['order-confirmation', this.troca.usuario.codigo]);
   }
 
