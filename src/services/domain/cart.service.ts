@@ -31,7 +31,7 @@ export class CartService {
         const cart = this.getCart();
         const position = cart.items.findIndex(x => x.produto.codigo === produto.codigo);
         if (position === -1) {
-            cart.items.push({ quantidade: 0, numeroChamado: '', produto: produto });
+            cart.items.push({ quantidade: 0, numeroChamado: '', motivo: '', produto: produto });
         }
         this.storage.setCart(cart);
         return cart;

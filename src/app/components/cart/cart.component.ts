@@ -1,3 +1,4 @@
+import { SelectItem } from 'primeng/api';
 import { UsuarioService } from './../../../services/domain/usuario.service';
 import { StorageService } from 'src/services/storage.service';
 import { ProdutoDTO } from 'src/models/produto.dto';
@@ -18,13 +19,24 @@ export class CartComponent implements OnInit {
   loading: boolean;
   troca: TrocasDTO;
   numeroChamado: string;
+  motivos: any[];
+  motivo: string;
 
   constructor(
     private cartService: CartService,
     private router: Router,
     private storage: StorageService,
     private usuarioService: UsuarioService
-  ) { }
+  ) { 
+
+    this.motivos = [
+      {name: 'Defeito Técnico'},
+      {name: 'Mau Uso'},
+      {name: 'Reposição'},
+      {name: 'Configuração'},
+      {name: 'Projeto'}
+  ];
+  }
 
   ngOnInit() {
     this.loadCart();
@@ -67,6 +79,7 @@ export class CartComponent implements OnInit {
     const position = cart.items.findIndex(x => x.produto.codigo == produto.codigo);
     if(position !== -1) {
         cart.items[position].numeroChamado = this.numeroChamado;
+        cart.items[position].motivo = this.motivo;
     }
     this.storage.setCart(cart);
     this.items = this.cartService.increaseQuantity(produto).items;
