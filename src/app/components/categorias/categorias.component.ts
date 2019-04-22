@@ -18,22 +18,21 @@ export class CategoriasComponent implements OnInit {
     private messageService: MessageService
     ) {
     this.formulario = this.formBuilder.group({
-      nome: [null,[Validators.required, Validators.minLength(5), Validators.maxLength(120)]]
+      nome: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(120)]]
     });
   }
 
   ngOnInit() {
-    
   }
 
-  salvar(){
+  salvar() {
     this.categoriaService.insert(this.formulario.value).subscribe(
       response => {
         this.showInsertOk();
-    },error => {})
+    }, error => {} );
   }
 
-  showInsertOk(){
+  showInsertOk() {
     this.messageService.add({
       severity: 'success',
       summary: 'Categoria cadastrada com sucesso !!!',
@@ -41,16 +40,16 @@ export class CategoriasComponent implements OnInit {
     });
 
     this.formulario = this.formBuilder.group({
-      nome: [null,[Validators.required, Validators.minLength(5), Validators.maxLength(120)]]
+      nome: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(120)]]
     });
   }
 
   getFromGroupClass(isInvalid: boolean, isDirty: any): {} {
     return{
-      'form-group':true,
+      'form-group': true,
       'has-error' : isInvalid && isDirty,
       'has-success' : !isInvalid && isDirty
-    }
+    };
   }
 
 }

@@ -29,7 +29,6 @@ export class CategoriasListComponent implements OnInit {
       this.usuarioService.findByEmail(localUser.email)
         .subscribe(response => {
           this.sites = response['site'];
-          console.log(this.sites);
         },
           error => {
             if (error.status === 403) {
@@ -44,14 +43,11 @@ export class CategoriasListComponent implements OnInit {
   ngOnInit() {
     this.categoriaService.findAll().subscribe(response => {
       this.items = response;
-      console.log(response);
     },
     error => {});
   }
 
   showProdutos(categoria_id: string, site_id: string) {
-    console.log(categoria_id, site_id);
-
     this.router.navigate(['/produto-details', categoria_id, site_id]);
   }
 

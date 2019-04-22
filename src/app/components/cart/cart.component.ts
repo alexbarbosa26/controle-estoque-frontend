@@ -1,4 +1,3 @@
-import { SelectItem } from 'primeng/api';
 import { UsuarioService } from './../../../services/domain/usuario.service';
 import { StorageService } from 'src/services/storage.service';
 import { ProdutoDTO } from 'src/models/produto.dto';
@@ -27,7 +26,7 @@ export class CartComponent implements OnInit {
     private router: Router,
     private storage: StorageService,
     private usuarioService: UsuarioService
-  ) { 
+  ) {
 
     this.motivos = [
       {name: 'Defeito Técnico'},
@@ -59,8 +58,10 @@ export class CartComponent implements OnInit {
 
           this.troca = {
             usuario: { codigo: response['codigo'] },
-            itens: cart.items.map(x => ({ quantidadeTroca: x.quantidade, numeroChamado: x.numeroChamado, produto: { codigo: x.produto.codigo } }))
-          };          
+            itens: cart.items.map(x => ({
+               quantidadeTroca: x.quantidade, numeroChamado: x.numeroChamado,
+                produto: { codigo: x.produto.codigo } }))
+          };
         });
 
     }
@@ -76,8 +77,8 @@ export class CartComponent implements OnInit {
 
   chamado(produto: ProdutoDTO) {
     const cart = this.cartService.getCart();
-    const position = cart.items.findIndex(x => x.produto.codigo == produto.codigo);
-    if(position !== -1) {
+    const position = cart.items.findIndex(x => x.produto.codigo === produto.codigo);
+    if (position !== -1) {
         cart.items[position].numeroChamado = this.numeroChamado;
         cart.items[position].motivo = this.motivo;
     }
@@ -99,7 +100,6 @@ export class CartComponent implements OnInit {
   }
 
   nextPage() {
-    console.log(this.troca)
     this.router.navigate(['order-confirmation', this.troca.usuario.codigo]);
   }
 
