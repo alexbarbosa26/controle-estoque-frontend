@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {enableProdMode} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +41,7 @@ import { ChartModule } from 'primeng/chart';
 import { ListboxModule } from 'primeng/listbox';
 import { DropdownModule } from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
+import { Select2Module } from 'ng2-select2';
 
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -55,6 +57,7 @@ import { ProdutoService } from 'src/services/domain/produto.service';
 import { TrocaService } from 'src/services/domain/troca.service';
 import { DashboardService } from 'src/services/domain/dashboard.service';
 
+enableProdMode();
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,7 +102,8 @@ import { DashboardService } from 'src/services/domain/dashboard.service';
     ChartModule,
     ListboxModule,
     DropdownModule,
-    InputTextModule
+    InputTextModule,
+    Select2Module
 
   ],
   providers: [

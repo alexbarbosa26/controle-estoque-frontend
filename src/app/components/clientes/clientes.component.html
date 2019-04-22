@@ -1,3 +1,33 @@
-<p>
-  clientes works!
-</p>
+<div class="box box-primary" style="max-width: 600px;">
+  <div class="box-header with-border">
+    <h3 class="box-title">Cadastrar Produtos</h3>
+
+    <form [formGroup]="formulario" class="form-horizontal" (ngSubmit)="salvar(); $event.preventDefault()"
+      style="padding: 10px">
+
+      <div class="box-body">
+
+        <div [ngClass]="getFromGroupClass(formulario.controls.nome.errors, formulario.controls.nome.dirty)">
+          <label class="col-sm-2 control-label" for="nome">Nome: </label>
+          <div class="col-sm-10">
+            <input formControlName="nome" id="nome" class="form-control" type="text" placeholder="Nome do Produto">
+            <span class="help-block" *ngIf="formulario.controls.nome.errors && formulario.controls.nome.dirty">Campo
+              obrigatório</span>
+          </div>
+        </div>
+
+        
+          <label class="col-sm-2 control-label" for="sites">Sites:</label>
+          <div class="col-sm-10">
+            <select2 [data]="sitesData" [options]="options" [value]="value" [width]="230">
+            </select2>
+          </div>
+        
+      </div>
+      
+      <div class="box-footer">
+          <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+</div>
