@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { ClienteService } from 'src/services/domain/cliente.service';
+import { SitesDTO } from 'src/models/sites.dto';
 
 @Component({
   selector: 'app-clientes',
@@ -11,20 +13,20 @@ import { MessageService } from 'primeng/api';
 })
 export class ClientesComponent implements OnInit {
 
-  formulario: FormGroup;
-  public sitesData: Array<Select2OptionData>;
-  public options: Select2Options;
-  public value: string[];
-  public current: string;
+  public formulario: FormGroup;
+  public sitesData: SitesDTO[];
 
   constructor(
     private formBuilder: FormBuilder,
     private sitesService: SitesService,
     private messageService: MessageService,
+    private clienteService: ClienteService
   ) {
 
     this.formulario = this.formBuilder.group({
-      nome: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(120)]]
+      nome: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(120)]],
+      situacao: [1],
+      site_cod: [null, [Validators.required]]
     });
   }
 
@@ -32,15 +34,18 @@ export class ClientesComponent implements OnInit {
 
     this.sitesService.findAll().subscribe(
       response => {
-        const sites = response;
-        this.sitesData = sites.map(x => ({id: x.codigo, text: x.nome}));
+        this.sitesData = response;
       }
     );
-    this.value = ['JBT'];
+  }
 
-    this.options = {
-      multiple: true
-    };
+  salvar() {
+    console.log(this.formulario.value);
+    this.clienteService.insert(this.formulario.value).subscribe(
+      response => {
+        this.showInsertOk();
+      }
+    );
   }
 
   getFromGroupClass(isInvalid: boolean, isDirty: any): {} {
@@ -54,16 +59,14 @@ export class ClientesComponent implements OnInit {
   showInsertOk() {
     this.messageService.add({
       severity: 'success',
-      summary: 'Produto cadastrado com sucesso !!!',
+      summary: 'Cliente cadastrado com sucesso !!!',
       detail: ''
     });
 
     this.formulario = this.formBuilder.group({
-      nome: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
-      quantidade: [null, [Validators.required]],
-      imagem: [null, [Validators.required]],
-      codCategoria: [null, [Validators.required]],
-      codSite: [null, [Validators.required]]
+      nome: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(120)]],
+      situacao: [1],
+      site_cod: [null, [Validators.required]]
 
     });
   }

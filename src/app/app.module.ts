@@ -1,3 +1,4 @@
+import { ClienteService } from 'src/services/domain/cliente.service';
 import { routes } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -120,7 +121,8 @@ enableProdMode();
     ProdutoService,
     CartService,
     TrocaService,
-    DashboardService
+    DashboardService,
+    ClienteService
 
   ],
   bootstrap: [AppComponent]

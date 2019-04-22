@@ -16,17 +16,21 @@
           </div>
         </div>
 
-        
-          <label class="col-sm-2 control-label" for="sites">Sites:</label>
+        <div [ngClass]="getFromGroupClass(formulario.controls.site_cod.errors, formulario.controls.site_cod.dirty)">
+          <label class="col-sm-2 control-label" for="site_cod">Sites:</label>
           <div class="col-sm-10">
-            <select2 [data]="sitesData" [options]="options" [value]="value" [width]="230">
-            </select2>
+            <select formControlName="site_cod" id="site_cod" class="form-control select2" multiple style="width: 100%;">
+              <option *ngFor="let s of sitesData" [value]="s.codigo">{{s.nome}}</option>
+            </select>
+            <span class="help-block" *ngIf="formulario.controls.site_cod.errors && formulario.controls.site_cod.dirty">Campo
+                obrigatório</span>
           </div>
-        
+        </div>
+
       </div>
-      
+
       <div class="box-footer">
-          <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid">Cadastrar</button>
+        <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid">Cadastrar</button>
       </div>
     </form>
   </div>
