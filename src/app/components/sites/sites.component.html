@@ -9,7 +9,7 @@
         <div [ngClass]="getFromGroupClass(formulario.controls.nome.errors, formulario.controls.nome.dirty)">
           <label class="col-sm-2 control-label" for="nome">Nome: </label>
           <div class="col-sm-10">
-            <input formControlName="nome" id="nome" class="form-control" type="text" placeholder="Sigla do Site">
+            <input formControlName="nome" id="nome" class="form-control" type="text" placeholder="Sigla do Site" autocomplete="off">
             <span class="help-block" *ngIf="formulario.controls.nome.errors && formulario.controls.nome.dirty">Deve conter no mínimo e no máximo 3 caracteres</span>
           </div>
         </div>
