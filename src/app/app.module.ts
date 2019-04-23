@@ -58,6 +58,7 @@ import { TrocaService } from 'src/services/domain/troca.service';
 import { DashboardService } from 'src/services/domain/dashboard.service';
 import { CelulasService } from 'src/services/domain/celulas.service';
 import { CelulasComponent } from './components/celulas/celulas.component';
+import { PickClientesComponent } from './components/clientes/pick-clientes/pick-clientes.component';
 
 enableProdMode();
 @NgModule({
@@ -78,7 +79,8 @@ enableProdMode();
     CartComponent,
     OrderConfirmationComponent,
     ClientesComponent,
-    CelulasComponent
+    CelulasComponent,
+    PickClientesComponent
 
 
   ],

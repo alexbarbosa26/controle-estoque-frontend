@@ -27,7 +27,8 @@
 
                     <div class="ui-g-2 ui-sm-6" for="site">Motivo: </div>
                     <div class="ui-g-10 ui-sm-6">
-                        <select *ngIf="item.motivo == '' " name="motivo" class="form-control" [(ngModel)]="motivo" style="max-width: 180px">
+                        <select *ngIf="item.motivo == '' " name="motivo" class="form-control" [(ngModel)]="motivo"
+                            style="max-width: 180px">
                             <option *ngFor="let s of motivos" [value]="s.name">{{s.name}}</option>
                         </select>
                         <span>{{item.motivo}}</span>
@@ -35,7 +36,8 @@
 
                     <div class="ui-g-2 ui-sm-6">Nº INC: </div>
                     <div class="ui-g-10 ui-sm-6">
-                        <input *ngIf="item.numeroChamado == '' " class="form-control input-sm" name="numeroChamado" type="text" [(ngModel)]="numeroChamado" style="max-width: 180px">
+                        <input *ngIf="item.numeroChamado == '' " class="form-control input-sm" name="numeroChamado"
+                            type="text" [(ngModel)]="numeroChamado" style="max-width: 180px">
                         <span>{{item.numeroChamado}}</span>
                         <i *ngIf="item.numeroChamado == '' " (click)="chamado(item.produto)" class="pi pi-check-circle"
                             style="font-size: 2em; color:#34A835;"></i>
@@ -63,5 +65,8 @@
             </div>
         </div>
     </ng-template>
+    <p-footer>
+        <button *ngIf="total() > 0" label="Próximo" pButton type="button" (click)="nextPage()"
+            class="ui-button-success" icon="pi pi-arrow-right"></button>
+    </p-footer>
 </p-dataView>
-<button *ngIf="total() > 0" label="Finalizar" pButton type="button" (click)="nextPage()"></button>

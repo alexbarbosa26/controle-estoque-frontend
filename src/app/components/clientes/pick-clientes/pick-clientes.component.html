@@ -1,0 +1,35 @@
+<p-panel>
+  <p-header>
+    <div class="ui-helper-clearfix">
+      <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">Escolha o Cliente</span>
+    </div>
+  </p-header>
+  <div class="box-body">
+
+    <div>
+      <label class="col-sm-2 control-label" for="cliente">Cliente: </label>
+      <div class="col-sm-10">
+        <select name="cliente" class="form-control" [(ngModel)]="cliente" style="max-width: 400px">
+          <option [value]="1">NET</option>
+          <option [value]="2">Neoenergia</option>
+        </select>
+      </div>
+    </div>
+
+    <label class="col-sm-2 control-label" for="celula">Célula: </label>
+    <div class="col-sm-10">
+      <select name="celula" class="form-control" [(ngModel)]="celula" style="max-width: 400px">
+        <option [value]="1">CRC</option>
+        <option [value]="2">CELPE</option>
+      </select>
+
+    </div>
+
+  </div>
+
+  <p-footer>
+    <button (click)="backCart()" pButton type="button" label="Voltar no Carrinho" icon="pi pi-arrow-left"
+      style="margin-right: .25em"></button>
+    <button label="Finalizar" pButton type="button" (click)="nextPage()" class="ui-button-success"></button>
+  </p-footer>
+</p-panel>
