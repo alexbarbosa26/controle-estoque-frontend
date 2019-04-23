@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.graficoBarra();
+        this.graficoBarraH();
         this.graficoBarraV();
     }
 
@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit {
                                 }]
                             },
                             animation: {
-                                easing: 'easeOutBounce',
+                                easing: 'linear',
                                 duration: 2000
                             },
                             title: {
@@ -118,17 +118,23 @@ export class HomeComponent implements OnInit {
 
     }
 
-
-    graficoBarra() {
-        this.dashboardService.totalPorProduto()
+    graficoBarraH() {
+        const user = this.storage.getLocalUser();
+        this.usuarioService.findByEmailDash(user.email)
             .subscribe(response => {
 
+                this.codUser = response['site'];
+                const cod: any = this.codUser.map(x => x.codigo);
+
+                this.dashboardService.totalPorProdutoSite(cod)
+            .subscribe((resp: any) => {
+
                 this.barChartData = {
-                    labels: response.map(x => x.nome),
+                    labels: resp.map(x => x.nome),
                     datasets: [
                         {
                             label: 'Estoque',
-                            data: response.map(x => x.quantidade),
+                            data: resp.map(x => x.quantidade),
                             borderColor: '#1E88E5',
                             backgroundColor: '#2555A3'
 
@@ -154,7 +160,7 @@ export class HomeComponent implements OnInit {
                         }]
                     },
                     animation: {
-                        easing: 'easeOutBounce',
+                        easing: 'linear',
                         duration: 2000
                     },
                     title: {
@@ -175,7 +181,8 @@ export class HomeComponent implements OnInit {
                 };
 
             });
-    }
 
+            });
+    }
 
 }

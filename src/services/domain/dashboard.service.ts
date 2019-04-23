@@ -21,4 +21,8 @@ export class DashboardService {
         return this.http.get(`${API_CONFIG.baseURL}/produtos/dashboard/list-categoria/?sites=${codSite}`);
     }
 
+    totalPorProdutoSite(codSite: string) {
+        return this.http.get(`${API_CONFIG.baseURL}/produtos/dashboard/sites/?sites=${codSite}`);
+    }
+
 }
