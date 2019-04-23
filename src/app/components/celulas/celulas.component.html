@@ -1,3 +1,48 @@
-<p>
-  celulas works!
-</p>
+<div class="box box-primary" style="max-width: 600px;">
+  <div class="box-header with-border">
+    <h3 class="box-title">Cadastrar Produtos</h3>
+
+    <form [formGroup]="formulario" class="form-horizontal" (ngSubmit)="salvar(); $event.preventDefault()"
+      style="padding: 10px">
+
+      <div class="box-body">
+
+        <div [ngClass]="getFromGroupClass(formulario.controls.nome.errors, formulario.controls.nome.dirty)">
+          <label class="col-sm-2 control-label" for="nome">Nome*: </label>
+          <div class="col-sm-10">
+            <input formControlName="nome" id="nome" class="form-control" type="text" placeholder="Nome do Produto"
+              autocomplete="off">
+            <span class="help-block" *ngIf="formulario.controls.nome.errors && formulario.controls.nome.dirty">Campo
+              obrigatório</span>
+          </div>
+        </div>
+
+        <div [ngClass]="getFromGroupClass(formulario.controls.pep.errors, formulario.controls.pep.dirty)">
+          <label class="col-sm-2 control-label" for="pep">Pep: </label>
+          <div class="col-sm-10">
+            <input formControlName="pep" id="pep" class="form-control" type="text" placeholder="00000-00"
+              autocomplete="off">
+            <span class="help-block" *ngIf="formulario.controls.pep.errors && formulario.controls.pep.dirty">Campo
+              obrigatório</span>
+          </div>
+        </div>
+
+        <div [ngClass]="getFromGroupClass(formulario.controls.cliente_cod.errors, formulario.controls.cliente_cod.dirty)">
+            <label class="col-sm-2 control-label" for="cliente_cod">Cliente*: </label>
+            <div class="col-sm-10">
+              <select formControlName="cliente_cod" id="cliente_cod" class="form-control" data-placeholder="Selecione">
+                <option *ngFor="let cli of listCliente" [value]="cli.codigo">
+                  {{cli.nome}}
+                </option>
+              </select>
+            </div>
+          </div>
+
+      </div>
+
+      <div class="box-footer">
+        <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+</div>

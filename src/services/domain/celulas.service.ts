@@ -4,29 +4,25 @@ import { ClienteDTO } from 'src/models/cliente.dto';
 import { API_CONFIG } from 'src/config/api.config';
 // tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs/Rx';
+import { CelulaDTO } from 'src/models/celula.dto';
 
 @Injectable()
-export class ClienteService {
+export class CelulasService {
 
     constructor (
         private http: HttpClient
     ) {}
 
-    findAll(): Observable<ClienteDTO[]> {
-        return this.http.get<ClienteDTO[]>(`${API_CONFIG.baseURL}/produtos/list-produto`);
+    findAll(): Observable<CelulaDTO[]> {
+        return this.http.get<CelulaDTO[]>(`${API_CONFIG.baseURL}/celula/list-produto`);
     }
 
-    insert(obj: ClienteDTO) {
-        return this.http.post(`${API_CONFIG.baseURL}/clientes`,
+    insert(obj: CelulaDTO) {
+        return this.http.post(`${API_CONFIG.baseURL}/celula`,
         obj, {
             observe: 'response',
             responseType: 'text'
         });
     }
 
-    findByClienteAndSiteAndSituacao(site_id: string): Observable<ClienteDTO[]> {
-
-        return this.http.get<ClienteDTO[]>(`${API_CONFIG.baseURL}/clientes/sites/situacao/?sites=${site_id}`);
-
-    }
 }

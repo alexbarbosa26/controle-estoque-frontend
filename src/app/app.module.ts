@@ -24,7 +24,6 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ProdutoDetailsComponent } from './components/produto/produto-details/produto-details.component';
 import { CartComponent } from './components/cart/cart.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
-import { CelulasComponent } from './components/celulas/celulas.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 
 import { ButtonModule } from 'primeng/button';
@@ -57,6 +56,8 @@ import { CartService } from 'src/services/domain/cart.service';
 import { ProdutoService } from 'src/services/domain/produto.service';
 import { TrocaService } from 'src/services/domain/troca.service';
 import { DashboardService } from 'src/services/domain/dashboard.service';
+import { CelulasService } from 'src/services/domain/celulas.service';
+import { CelulasComponent } from './components/celulas/celulas.component';
 
 enableProdMode();
 @NgModule({
@@ -122,7 +123,8 @@ enableProdMode();
     CartService,
     TrocaService,
     DashboardService,
-    ClienteService
+    ClienteService,
+    CelulasService
 
   ],
   bootstrap: [AppComponent]

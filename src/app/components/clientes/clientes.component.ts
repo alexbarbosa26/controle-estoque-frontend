@@ -1,6 +1,5 @@
 import { SitesService } from 'src/services/domain/sites.service';
 import { Component, OnInit } from '@angular/core';
-import { Select2OptionData } from 'ng2-select2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { ClienteService } from 'src/services/domain/cliente.service';
@@ -40,7 +39,6 @@ export class ClientesComponent implements OnInit {
   }
 
   salvar() {
-    console.log(this.formulario.value);
     this.clienteService.insert(this.formulario.value).subscribe(
       response => {
         this.showInsertOk();
