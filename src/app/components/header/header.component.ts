@@ -1,3 +1,4 @@
+import { StorageService } from 'src/services/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/services/domain/cart.service';
 
@@ -9,13 +10,19 @@ import { CartService } from 'src/services/domain/cart.service';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private storage: StorageService
   ) { }
 
   ngOnInit() {
+    console.log();
   }
 
-  total(){
+  usuario() {
+    return this.storage.getLocalUser().email;
+  }
+
+  total() {
     return this.cartService.total();
   }
 
