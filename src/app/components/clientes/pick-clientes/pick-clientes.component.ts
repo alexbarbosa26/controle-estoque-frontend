@@ -1,5 +1,5 @@
-import { ClienteDTO } from './../../../../models/cliente.dto';
 import { Component, OnInit } from '@angular/core';
+import { ClienteDTO } from 'src/models/cliente.dto';
 
 @Component({
   selector: 'app-pick-clientes',
@@ -9,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class PickClientesComponent implements OnInit {
 
   public items: ClienteDTO[];
-  constructor() { }
+  constructor(
+  ) {}
 
   ngOnInit() {
 
