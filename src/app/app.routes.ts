@@ -17,6 +17,7 @@ import { OrderConfirmationComponent } from './components/order-confirmation/orde
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { CelulasComponent } from './components/celulas/celulas.component';
 import { PickClientesComponent } from './components/clientes/pick-clientes/pick-clientes.component';
+import { ListProdutoComponent } from './components/produto/list-produto/list-produto.component';
 
 export const ROUTES: Routes = [
     {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -33,7 +34,8 @@ export const ROUTES: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
     {path: 'order-confirmation/:troca', component: OrderConfirmationComponent, canActivate: [AuthGuard]},
-    {path: 'pick-clientes', component: PickClientesComponent, canActivate: [AuthGuard]}
+    {path: 'pick-clientes', component: PickClientesComponent, canActivate: [AuthGuard]},
+    {path: 'list-produto', component: ListProdutoComponent, canActivate: [AuthGuard]}
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(ROUTES);

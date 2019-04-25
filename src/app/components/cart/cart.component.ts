@@ -58,6 +58,7 @@ export class CartComponent implements OnInit {
 
           this.troca = {
             usuario: { codigo: response['codigo'] },
+            celula: null,
             itens: cart.items.map(x => ({
                quantidadeTroca: x.quantidade, numeroChamado: x.numeroChamado,
                 produto: { codigo: x.produto.codigo } }))
@@ -100,7 +101,7 @@ export class CartComponent implements OnInit {
   }
 
   nextPage() {
-    this.router.navigate(['order-confirmation', this.troca.usuario.codigo]);
+    this.router.navigate(['pick-clientes', this.troca.usuario.codigo]);
   }
 
 }

@@ -25,4 +25,10 @@ export class CelulasService {
         });
     }
 
+    findByCelulaByCliente(cliente_id: string): Observable<CelulaDTO[]> {
+
+        return this.http.get<CelulaDTO[]>(`${API_CONFIG.baseURL}/celula/cliente/${cliente_id}`);
+
+    }
+
 }

@@ -44,9 +44,11 @@ export class OrderConfirmationComponent implements OnInit {
 
         this.trocas = {
           usuario: { codigo: response['codigo'] },
+          celula: null,
           itens: cart.items.map(x => (
             {
-              quantidadeTroca: x.quantidade, numeroChamado: x.numeroChamado, motivo: x.motivo,
+              quantidadeTroca: x.quantidade,
+               numeroChamado: x.numeroChamado, motivo: x.motivo,
                produto: {
                  codigo: x.produto.codigo
                  }}))

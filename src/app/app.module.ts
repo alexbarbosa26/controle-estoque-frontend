@@ -1,10 +1,9 @@
-import { ClienteService } from 'src/services/domain/cliente.service';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { routes } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {enableProdMode} from '@angular/core';
 
@@ -25,6 +24,9 @@ import { ProdutoDetailsComponent } from './components/produto/produto-details/pr
 import { CartComponent } from './components/cart/cart.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
+import { CelulasComponent } from './components/celulas/celulas.component';
+import { PickClientesComponent } from './components/clientes/pick-clientes/pick-clientes.component';
+import { ListProdutoComponent } from './components/produto/list-produto/list-produto.component';
 
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -57,8 +59,7 @@ import { ProdutoService } from 'src/services/domain/produto.service';
 import { TrocaService } from 'src/services/domain/troca.service';
 import { DashboardService } from 'src/services/domain/dashboard.service';
 import { CelulasService } from 'src/services/domain/celulas.service';
-import { CelulasComponent } from './components/celulas/celulas.component';
-import { PickClientesComponent } from './components/clientes/pick-clientes/pick-clientes.component';
+import { ClienteService } from 'src/services/domain/cliente.service';
 
 enableProdMode();
 @NgModule({
@@ -80,7 +81,8 @@ enableProdMode();
     OrderConfirmationComponent,
     ClientesComponent,
     CelulasComponent,
-    PickClientesComponent
+    PickClientesComponent,
+    ListProdutoComponent
 
 
   ],

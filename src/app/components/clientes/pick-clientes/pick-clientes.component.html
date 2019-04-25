@@ -4,30 +4,36 @@
       <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">Escolha o Cliente</span>
     </div>
   </p-header>
-  <div class="box-body">
+  <form [formGroup]="formCliente">
 
-    <label class="col-sm-2 control-label" for="cliente">Cliente: </label>
-    <div class="col-sm-10">
-      <select id="cliente" class="form-control" [(ngModel)]="selectCliente"
-        style="max-width: 400px">
-        <option [value]="1">NET</option>
-        <option [value]="2">Neoenergia</option>
-      </select>
+    <div class="box-body">
+      
+      <div
+        [ngClass]="{'form-group': true, 'has-error': (formCliente.controls.nome.errors && formCliente.controls.nome.dirty), 'has-success': !formCliente.controls.nome.errors}">
+        <label class="col-sm-2 control-label" for="nome">Cliente: </label>
+        <div class="col-sm-10">
+          <select formControlName="nome" id="nome" class="form-control" style="max-width: 400px" (change)="updateCelula()">
+            <option *ngFor="let cli of listCliente; fisrt as f" [value]="cli.codigo" [selected]="f">{{cli.nome}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div [ngClass]="{'form-group': true, 'has-error': (formCliente.controls.celula.errors && formCliente.controls.celula.dirty), 'has-success': !formCliente.controls.celula.errors}">
+        <br /><br /><br />
+        <label class="col-sm-2 control-label" for="celula">Célula: </label>
+        <div class="col-sm-10">
+          <select formControlName="celula" name="celula" class="form-control" style="max-width: 400px">
+            <option *ngFor="let cel of celula" [value]="cel.codigo" >{{cel.nome}}</option>
+          </select>
+        </div>
+      </div>
+
     </div>
-
-    <label class="col-sm-2 control-label" for="celula">Célula: </label>
-    <div class="col-sm-10">
-      <select name="celula" class="form-control" [(ngModel)]="celula" style="max-width: 400px">
-        <option [value]="1">CRC</option>
-        <option [value]="2">CELPE</option>
-      </select>
-
-    </div>
-
-  </div>
+  </form>
   <p-footer>
     <button (click)="backCart()" pButton type="button" label="Voltar no Carrinho" icon="pi pi-arrow-left"
       style="margin-right: .25em"></button>
-    <button label="Finalizar" pButton type="button" (click)="nextPage()" class="ui-button-success"></button>
+    <button [disabled]="formCliente.invalid" label="Finalizar" pButton type="button" (click)="nextPage()"
+      class="ui-button-success"></button>
   </p-footer>
 </p-panel>

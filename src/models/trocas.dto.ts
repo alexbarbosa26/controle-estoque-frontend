@@ -3,5 +3,6 @@ import { ItemTrocaDTO } from './item-troca.dto';
 
 export interface TrocasDTO {
     usuario: RefDTO;
+    celula: RefDTO;
     itens: ItemTrocaDTO[];
 }
