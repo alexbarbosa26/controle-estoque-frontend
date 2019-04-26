@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { routes } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {enableProdMode} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +25,7 @@ import { OrderConfirmationComponent } from './components/order-confirmation/orde
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { CelulasComponent } from './components/celulas/celulas.component';
 import { PickClientesComponent } from './components/clientes/pick-clientes/pick-clientes.component';
-import { ListProdutoComponent } from './components/produto/list-produto/list-produto.component';
+import { EditPodutosComponent } from './components/produto/edit-podutos/edit-podutos.component';
 
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -82,7 +81,7 @@ enableProdMode();
     ClientesComponent,
     CelulasComponent,
     PickClientesComponent,
-    ListProdutoComponent
+    EditPodutosComponent
 
 
   ],

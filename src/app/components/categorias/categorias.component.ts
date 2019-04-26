@@ -1,7 +1,7 @@
+import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { CategoriaService } from 'src/services/domain/categoria.service';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-categorias',
@@ -27,9 +27,9 @@ export class CategoriasComponent implements OnInit {
 
   salvar() {
     this.categoriaService.insert(this.formulario.value).subscribe(
-      response => {
+      () => {
         this.showInsertOk();
-    }, error => {} );
+    }, () => {} );
   }
 
   showInsertOk() {

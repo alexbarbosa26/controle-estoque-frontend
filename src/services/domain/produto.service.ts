@@ -24,9 +24,23 @@ export class ProdutoService {
         });
     }
 
+    update(obj: ProdutoDTO) {
+        return this.http.put(`${API_CONFIG.baseURL}/produtos/${obj.codigo}`,
+        obj, {
+            observe: 'response',
+            responseType: 'text'
+        });
+    }
+
     findByProdutoCategoriaSite(categoria_id: string, site_id: string): Observable<ProdutoDTO[]> {
 
         return this.http.get<ProdutoDTO[]>(`${API_CONFIG.baseURL}/produtos/?sites=${site_id}&categorias=${categoria_id}`);
+
+    }
+
+    findAllProdutoBySite(site_id: string): Observable<ProdutoDTO[]> {
+
+        return this.http.get<ProdutoDTO[]>(`${API_CONFIG.baseURL}/produtos/site/?sites=${site_id}`);
 
     }
 }

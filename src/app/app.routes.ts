@@ -1,11 +1,11 @@
-import { AppComponent } from './app.component';
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './../services/auth.guard';
+
+import { AppComponent } from './app.component';
 import { CategoriasListComponent } from './components/categorias/categorias-list/categorias-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/security/login/login.component';
-
-import { ModuleWithProviders } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { ProdutoComponent } from './components/produto/produto.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
@@ -17,7 +17,7 @@ import { OrderConfirmationComponent } from './components/order-confirmation/orde
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { CelulasComponent } from './components/celulas/celulas.component';
 import { PickClientesComponent } from './components/clientes/pick-clientes/pick-clientes.component';
-import { ListProdutoComponent } from './components/produto/list-produto/list-produto.component';
+import { EditPodutosComponent } from './components/produto/edit-podutos/edit-podutos.component';
 
 export const ROUTES: Routes = [
     {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -35,7 +35,7 @@ export const ROUTES: Routes = [
     {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
     {path: 'order-confirmation', component: OrderConfirmationComponent, canActivate: [AuthGuard]},
     {path: 'pick-clientes/:troca', component: PickClientesComponent, canActivate: [AuthGuard]},
-    {path: 'list-produto', component: ListProdutoComponent, canActivate: [AuthGuard]}
+    {path: 'edit-produtos', component: EditPodutosComponent, canActivate: [AuthGuard]}
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(ROUTES);

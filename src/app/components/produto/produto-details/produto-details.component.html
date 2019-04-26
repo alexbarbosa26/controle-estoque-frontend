@@ -34,9 +34,9 @@
                 </div>
             </div>
             <div class="ui-g-12 ui-md-1 search-icon">
-                <button *ngIf="valor?.quantidade !=0 " label="Adicionar" pButton type="button" icon="pi pi-plus"
+                <button *ngIf="valor?.quantidade !=0 " pButton type="button" icon="pi pi-plus"
                     (click)="addToCart(valor)"></button>
-                <p *ngIf="valor?.quantidade == 0" style="color:#e91224;">Produto Indisponível</p>
+                <p *ngIf="valor?.quantidade == 0" style="color:#e91224;">Indisponível</p>
             </div>
         </div>
     </ng-template>
@@ -48,7 +48,7 @@
                 <hr class="ui-widget-content" style="border-top:0">
                 <button *ngIf="valor?.quantidade !=0" label="Adicionar" pButton type="button" icon="pi pi-plus" (click)="addToCart(valor)"
                     style="margin-top:0"></button>
-                <p *ngIf="valor?.quantidade == 0" style="color:#e91224;">Produto Indisponível</p>
+                <p *ngIf="valor?.quantidade == 0" style="color:#e91224;">Indisponível</p>
             </p-panel>
         </div>
     </ng-template>

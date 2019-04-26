@@ -2,16 +2,10 @@
     [sortField]="sortField" [sortOrder]="sortOrder" emptyMessage="Sua lista de trocas está vazia">
     <p-header>
         <div class="ui-helper-clearfix">
-            <div class="ui-g">
-                <div class="ui-g-12 ui-md-4">
-                    <h3>Total: {{total()}}</h3>
-                </div>
-                <div class="ui-g-6 ui-md-4 filter-container">
-                    <div style="position:relative; text-align: center">
-                        <button label="Itens" pButton type="button" icon="pi pi-plus" (click)="goOn()"></button>
-                    </div>
-                </div>
-            </div>
+                <span class="ui-panel-title" style="font-size:20px;display:inline-block;margin-top:2px">
+                    Total: {{total()}}
+                </span>
+            <button style="float:right;" label="Itens" pButton type="button" icon="pi pi-plus" (click)="goOn()"></button>
         </div>
     </p-header>
     <ng-template let-item pTemplate="listItem">

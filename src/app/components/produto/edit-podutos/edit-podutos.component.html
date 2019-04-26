@@ -1,0 +1,58 @@
+<p-table #dt [value]="produto" [paginator]="true" [rows]="10" [globalFilterFields]="['nome','site.nome']"
+  dataKey="codigo" editMode="row" [responsive]="true" selectionMode="multiple">
+  <ng-template pTemplate="caption">
+      <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">Produtos do Estoque</span>
+    <div style="text-align: right">
+      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+      <input type="text" pInputText placeholder="Filtrar Estoque"
+        (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Código</th>
+      <th style="width:auto">Nome</th>
+      <th>Qtd</th>
+      <th>Site</th>
+      <th style="width:8em"></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-editing="editing" style="width:auto" let-ri="rowIndex">
+    <tr [pEditableRow]="rowData">
+      <td>
+        {{rowData.codigo}}
+      </td>
+      <td>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="rowData.nome" required>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.nome}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="rowData.quantidade" required>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.quantidade}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td>
+        {{rowData?.site.nome}}
+      </td>
+      <td style="text-align:center">
+        <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info"
+          (click)="onRowEditInit(rowData)"></button>
+        <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success"
+          style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+        <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger"
+          (click)="onRowEditCancel(rowData, ri)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
