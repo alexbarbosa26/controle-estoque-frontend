@@ -1,9 +1,9 @@
+import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from './../../../services/domain/usuario.service';
 import { StorageService } from 'src/services/storage.service';
 import { ProdutoDTO } from 'src/models/produto.dto';
-import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/models/cart-item';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { CartService } from 'src/services/domain/cart.service';
 import { TrocasDTO } from 'src/models/trocas.dto';
 

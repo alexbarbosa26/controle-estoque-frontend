@@ -1,8 +1,8 @@
+import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { CategoriaDTO } from './../../../models/categoria.dto';
 import { CategoriaService } from 'src/services/domain/categoria.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from 'src/services/domain/produto.service';
 import { SelectItem } from 'primeng/api';
 import { StorageService } from 'src/services/storage.service';
