@@ -23,7 +23,7 @@
         <label class="col-sm-2 control-label" for="celula">Célula: </label>
         <div class="col-sm-10">
           <select formControlName="celula" name="celula" class="form-control" style="max-width: 400px">
-            <option *ngFor="let cel of celula" [value]="cel.codigo" >{{cel.nome}}</option>
+            <option *ngFor="let cel of celulas" [value]="cel.codigo" >{{cel.nome}}</option>
           </select>
         </div>
       </div>

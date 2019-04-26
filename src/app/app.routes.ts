@@ -33,8 +33,8 @@ export const ROUTES: Routes = [
     {path: 'logout', component: AppComponent},
     {path: 'login', component: LoginComponent},
     {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
-    {path: 'order-confirmation/:troca', component: OrderConfirmationComponent, canActivate: [AuthGuard]},
-    {path: 'pick-clientes', component: PickClientesComponent, canActivate: [AuthGuard]},
+    {path: 'order-confirmation', component: OrderConfirmationComponent, canActivate: [AuthGuard]},
+    {path: 'pick-clientes/:troca', component: PickClientesComponent, canActivate: [AuthGuard]},
     {path: 'list-produto', component: ListProdutoComponent, canActivate: [AuthGuard]}
 ];
 

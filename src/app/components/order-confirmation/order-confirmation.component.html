@@ -27,6 +27,17 @@
   </p-footer>
 </p-card>
 <br />
+<p-card header="Cliente e Celula" styleClass="ui-card-shadow" *ngIf="!codTroca">
+  <p-header></p-header>
+  <div>
+    <h4>{{celula?.cliente.nome}}</h4>
+    <h5>{{celula?.nome}}</h5>
+    <h5>{{celula?.pep}}</h5>
+
+  </div>
+
+</p-card>
+<br />
 <p-card header="Usuário" styleClass="ui-card-shadow" *ngIf="!codTroca">
   <p-header>
 

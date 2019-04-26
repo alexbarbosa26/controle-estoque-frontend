@@ -31,4 +31,8 @@ export class CelulasService {
 
     }
 
+    findByCelula(codigo: any) {
+        return this.http.get(`${API_CONFIG.baseURL}/celula/${codigo}`);
+
+    }
 }

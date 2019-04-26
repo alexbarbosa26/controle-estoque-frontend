@@ -12,7 +12,7 @@ import { UsuarioDTO } from 'src/models/usuario.dto';
 import { TrocasDTO } from 'src/models/trocas.dto';
 import { CartItem } from 'src/models/cart-item';
 import { StorageService } from 'src/services/storage.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-pick-clientes',
@@ -21,15 +21,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PickClientesComponent implements OnInit {
 
-  trocas: TrocasDTO;
   cartItems: CartItem[];
-  usuario: UsuarioDTO;
   codTroca: number;
   codSites: SitesDTO[];
   listCliente: ClienteDTO[];
   formCliente: FormGroup;
-  celula: CelulaDTO[];
+  celulas: CelulaDTO[];
   cliente: ClienteDTO[];
+  troca: TrocasDTO;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,8 +47,34 @@ export class PickClientesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cartPage();
     this.buscarClientes();
 
+  }
+
+  cartPage() {
+    const cod = this.route.snapshot.params[`troca`];
+
+    this.cartItems = this.cartService.getCart().items;
+
+    this.usuarioService.findById(cod)
+      .subscribe(response => {
+
+        const cart = this.cartService.getCart();
+        this.troca = {
+          usuario: { codigo: response['codigo'] },
+          celula: this.formCliente.value.celula,
+          itens: cart.items.map(x => (
+            {
+              quantidadeTroca: x.quantidade,
+              numeroChamado: x.numeroChamado,
+              motivo: x.motivo,
+              produto: {
+                codigo: x.produto.codigo
+              }
+            }))
+        };
+      });
   }
 
   buscarClientes() {
@@ -63,7 +88,7 @@ export class PickClientesComponent implements OnInit {
           resp => {
             this.listCliente = resp;
 
-          }, error => {});
+          }, error => { });
 
       }
     );
@@ -74,12 +99,12 @@ export class PickClientesComponent implements OnInit {
 
     this.celulaService.findByCelulaByCliente(cliente_id).subscribe(
       response => {
-        this.celula = response;
+        this.celulas = response;
         this.formCliente.patchValue({
           celula: null
         });
 
-      }, error => {});
+      }, error => { });
 
   }
 
@@ -87,8 +112,11 @@ export class PickClientesComponent implements OnInit {
     this.router.navigate(['cart']);
   }
 
-  nextePage() {
-    this.router.navigate(['order-confirmation']);
+  nextPage() {
+    this.router.navigate([`order-confirmation/`, {
+      codUser: this.troca.usuario.codigo,
+      codCelula: this.formCliente.value.celula
+    }]);
   }
 
 }
