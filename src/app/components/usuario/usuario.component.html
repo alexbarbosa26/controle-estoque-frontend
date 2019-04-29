@@ -6,7 +6,7 @@
 
       <div class="box-body">
 
-        <div [ngClass]="getFromGroupClass(formulario.controls.matricula.errors, formulario.controls.matricula.dirty)">
+        <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.matricula.errors && formulario.controls.matricula.dirty), 'has-success': !formulario.controls.matricula.errors}">
           <label class="col-sm-2 control-label" for="matricula">Matrícula*: </label>
           <div class="col-sm-10">
             <input formControlName="matricula" id="matricula" class="form-control" type="text" placeholder="Matrícula do Usuário" autocomplete="off">
@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div [ngClass]="getFromGroupClass(formulario.controls.nome.errors, formulario.controls.nome.dirty)">
+        <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.nome.errors && formulario.controls.nome.dirty), 'has-success': !formulario.controls.nome.errors}">
           <label class="col-sm-2 control-label" for="nome">Nome*: </label>
           <div class="col-sm-10">
             <input formControlName="nome" id="nome" class="form-control" type="text" placeholder="Nome do Usuário" autocomplete="off">
@@ -24,7 +24,7 @@
           </div>
         </div>
 
-        <div [ngClass]="getFromGroupClass(formulario.controls.senha.errors, formulario.controls.senha.dirty)">
+        <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.senha.errors && formulario.controls.senha.dirty), 'has-success': !formulario.controls.senha.errors}">
           <label class="col-sm-2 control-label" for="senha">Senha: </label>
           <div class="col-sm-10">
             <input formControlName="senha" id="senha" class="form-control" type="password" placeholder="Senha do usuario" autocomplete="off">
@@ -33,7 +33,7 @@
             
           </div>
         </div>
-        <div [ngClass]="getFromGroupClass(formulario.controls.confirma.errors, formulario.controls.confirma.dirty)">
+        <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.confirma.errors && formulario.controls.confirma.dirty), 'has-success': !formulario.controls.confirma.errors}">
           <label class="col-sm-2 control-label" for="confirma">Confirmar Senha: </label>
           <div class="col-sm-10">
             <input formControlName="confirma" id="confirma" class="form-control" type="password" placeholder="Confirmar senha" autocomplete="off">
@@ -42,7 +42,7 @@
           </div>
         </div>
 
-        <div [ngClass]="getFromGroupClass(formulario.controls.email.errors, formulario.controls.email.dirty)">
+        <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.email.errors && formulario.controls.email.dirty), 'has-success': !formulario.controls.email.errors}">
           <label class="col-sm-2 control-label" for="email">Email: </label>
           <div class="col-sm-10">
             <input formControlName="email" id="email" class="form-control" type="email" placeholder="Email do usuario" autocomplete="off">
@@ -51,7 +51,7 @@
           </div>
         </div>
 
-        <div [ngClass]="getFromGroupClass(formulario.controls.codSite.errors, formulario.controls.codSite.dirty)">
+        <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.codSite.errors && formulario.controls.codSite.dirty), 'has-success': !formulario.controls.codSite.errors}">
           <label class="col-sm-2 control-label" for="site">Site </label>
           <div class="col-sm-10">
             <select formControlName="codSite" id="site" class="form-control">

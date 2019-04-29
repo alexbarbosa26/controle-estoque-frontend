@@ -8,8 +8,7 @@
 
     <div class="box-body">
       
-      <div
-        [ngClass]="{'form-group': true, 'has-error': (formCliente.controls.nome.errors && formCliente.controls.nome.dirty), 'has-success': !formCliente.controls.nome.errors}">
+      <div [ngClass]="{'form-group': true, 'has-error': (formCliente.controls.nome.errors && formCliente.controls.nome.dirty), 'has-success': !formCliente.controls.nome.errors}">
         <label class="col-sm-2 control-label" for="nome">Cliente: </label>
         <div class="col-sm-10">
           <select formControlName="nome" id="nome" class="form-control" style="max-width: 400px" (change)="updateCelula()">

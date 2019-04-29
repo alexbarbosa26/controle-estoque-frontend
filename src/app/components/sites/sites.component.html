@@ -6,7 +6,7 @@
 
       <div class="box-body">
 
-        <div [ngClass]="getFromGroupClass(formulario.controls.nome.errors, formulario.controls.nome.dirty)">
+        <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.nome.errors && formulario.controls.nome.dirty), 'has-success': !formulario.controls.nome.errors}">
           <label class="col-sm-2 control-label" for="nome">Nome: </label>
           <div class="col-sm-10">
             <input formControlName="nome" id="nome" class="form-control" type="text" placeholder="Sigla do Site" autocomplete="off">

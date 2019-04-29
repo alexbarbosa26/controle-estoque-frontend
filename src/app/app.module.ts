@@ -42,7 +42,6 @@ import { ChartModule } from 'primeng/chart';
 import { ListboxModule } from 'primeng/listbox';
 import { DropdownModule } from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
-import { Select2Module } from 'ng2-select2';
 
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -107,8 +106,7 @@ enableProdMode();
     ChartModule,
     ListboxModule,
     DropdownModule,
-    InputTextModule,
-    Select2Module
+    InputTextModule
 
   ],
   providers: [

@@ -6,7 +6,7 @@
 
       <div class="box-body">
 
-        <div [ngClass]="getFromGroupClass(formulario.controls.nome.errors, formulario.controls.nome.dirty)">
+        <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.nome.errors && formulario.controls.nome.dirty), 'has-success': !formulario.controls.nome.errors}">
           <label class="col-sm-2 control-label" for="nome">Nome: </label>
           <div class="col-sm-10">
             <input formControlName="nome" id="nome" class="form-control" type="text" placeholder="Nome do Produto" autocomplete="off">
@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div [ngClass]="getFromGroupClass(formulario.controls.quantidade.errors, formulario.controls.quantidade.dirty)">
+        <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.quantidade.errors && formulario.controls.quantidade.dirty), 'has-success': !formulario.controls.quantidade.errors}">
           <label class="col-sm-2 control-label" for="quantidade">Quantidade: </label>
           <div class="col-sm-10">
             <input formControlName="quantidade" id="quantidade" class="form-control" type="text" placeholder="Quantidade do Produto"
@@ -25,7 +25,7 @@
           </div>
         </div>
 
-        <div [ngClass]="getFromGroupClass(formulario.controls.codCategoria.errors, formulario.controls.codCategoria.dirty)">
+        <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.codCategoria.errors && formulario.controls.codCategoria.dirty), 'has-success': !formulario.controls.codCategoria.errors}">
           <label class="col-sm-2 control-label" for="categoria">Categoria </label>
           <div class="col-sm-10">
             <select formControlName="codCategoria" id="categoria" class="form-control" data-placeholder="Selecione">
@@ -36,7 +36,7 @@
           </div>
         </div>
 
-        <div [ngClass]="getFromGroupClass(formulario.controls.codSite.errors, formulario.controls.codSite.dirty)">
+        <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.codSite.errors && formulario.controls.codSite.dirty), 'has-success': !formulario.controls.codSite.errors}">
           <label class="col-sm-2 control-label" for="site">Site </label>
           <div class="col-sm-10">
             <select formControlName="codSite" id="site" class="form-control">
@@ -45,7 +45,7 @@
           </div>
         </div>
 
-        <div [ngClass]="getFromGroupClass(formulario.controls.imagem.errors, formulario.controls.imagem.dirty)">
+        <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.imagem.errors && formulario.controls.imagem.dirty), 'has-success': !formulario.controls.imagem.errors}">
           <label class="col-sm-2 control-label" for="imagem">Imagem </label>
           <div class="col-sm-10">
             <p-dropdown id="imagem" placeholder="Escolha uma Imagem" [options]="produtos" filter="true" [style]="{'width':'270px'}" formControlName="imagem" [showClear]="true">
