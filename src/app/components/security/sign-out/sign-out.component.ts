@@ -29,9 +29,10 @@ export class SignOutComponent implements OnInit {
   }
 
   signout(): void {
+    // window.location.reload();
     this.storage.setLocalUser(null);
-    this.router.navigate(['login']);
-    window.location.reload();
+    // this.router.navigate(['login']);
+    window.location.href = '';
   }
 
 }

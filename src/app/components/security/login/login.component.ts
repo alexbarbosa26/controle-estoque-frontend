@@ -38,8 +38,9 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         this.auth.successfullLogin(response.headers.get('Authorization'));
         this.shared.showTemplate.emit(true);
-        window.location.reload();
-        this.router.navigate(['']);
+        // window.location.reload();
+        // this.router.navigate(['']);
+        window.location.href = '';
       },
         error => {
           if (error.status === 403) {
