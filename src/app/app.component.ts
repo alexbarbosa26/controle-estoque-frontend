@@ -25,18 +25,12 @@ export class AppComponent {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
-    this.spinner.show();
-
     this.shared.showTemplate.subscribe(
       (show: boolean) => this.showTemplate = show
     );
 
     this.refreshTokenUser();
 
-    setTimeout(() => {
-      /** spinner ends after 2 seconds */
-      this.spinner.hide();
-    }, 2000);
   }
 
 
@@ -53,6 +47,7 @@ export class AppComponent {
           error => {
             this.shared.showTemplate.emit(false);
             this.router.navigate(['/login']);
+            window.location.reload();
           });
     }
   }

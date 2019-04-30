@@ -16,8 +16,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class LoginComponent implements OnInit {
 
   creds: CredenciaisDTO = {
-    email: "",
-    senha: ""
+    email: '',
+    senha: ''
   };
 
   shared: SharedService;
@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         this.auth.successfullLogin(response.headers.get('Authorization'));
         this.shared.showTemplate.emit(true);
-        this.router.navigate(['/']);
+        window.location.reload();
+        this.router.navigate(['']);
       },
         error => {
-          if (error.status == 403) {
-
+          if (error.status === 403) {
           }
         });
 
@@ -51,10 +51,6 @@ export class LoginComponent implements OnInit {
       this.spinner.hide();
     }, 2000);
 
-  }
-
-  logout() {
-    this.auth.logout;
   }
 
 }

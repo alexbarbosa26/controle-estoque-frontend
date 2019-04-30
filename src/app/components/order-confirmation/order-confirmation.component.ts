@@ -39,7 +39,7 @@ export class OrderConfirmationComponent implements OnInit {
     const codCelula: any = +this.route.snapshot.paramMap.get(`codCelula`);
 
     this.buscarCelula();
-    
+
     this.cartItems = this.cartService.getCart().items;
 
     this.usuarioService.findById(cod)

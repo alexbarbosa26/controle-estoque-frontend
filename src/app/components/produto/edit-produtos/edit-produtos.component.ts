@@ -1,18 +1,18 @@
+import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { MessageService } from 'primeng/api';
-import { SitesDTO } from './../../../../models/sites.dto';
-import { UsuarioDTO } from 'src/models/usuario.dto';
+import { SitesDTO } from '../../../../models/sites.dto';
 import { StorageService } from 'src/services/storage.service';
 import { UsuarioService } from 'src/services/domain/usuario.service';
 import { ProdutoDTO } from 'src/models/produto.dto';
 import { ProdutoService } from 'src/services/domain/produto.service';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-edit-podutos',
-  templateUrl: './edit-podutos.component.html',
-  styleUrls: ['./edit-podutos.component.css']
+  selector: 'app-edit-produtos',
+  templateUrl: './edit-produtos.component.html',
+  styleUrls: ['./edit-produtos.component.css']
 })
-export class EditPodutosComponent implements OnInit {
+export class EditProdutosComponent implements OnInit {
 
   public produto: ProdutoDTO[];
   public produtos: ProdutoDTO;
@@ -24,18 +24,19 @@ export class EditPodutosComponent implements OnInit {
     private produtoService: ProdutoService,
     private usuarioService: UsuarioService,
     private storage: StorageService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
+    this.spinner.show();
+
     this.buscarProdutos();
 
-    this.cols = [
-      { field: 'codigo', header: 'Codigo' },
-      { field: 'nome', header: 'Nome' },
-      { field: 'qtd', header: 'Qtd' },
-      { field: 'color', header: 'Color' }
-  ];
+    setTimeout(() => {
+      /** spinner ends after 2 seconds */
+      this.spinner.hide();
+    }, 1000);
   }
 
   buscarProdutos() {
