@@ -6,26 +6,61 @@
   <div class="login-box-body">
     <p class="login-box-msg">Entre para iniciar sua sessão</p>
 
-    <form>
+    <form (ngSubmit)="login(); $event.preventDefault()">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="creds.email" name="email" autocomplete="off">
+        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="creds.email" name="email"
+          autocomplete="off" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
+      
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="creds.senha" name="senha" autocomplete="off">
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="creds.senha" name="senha"
+          autocomplete="off" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-      <div class="row">        
+      <div class="row">
         <!-- /.col -->
         <div class="col-xs-4"><br>
-          <button type="submit" class="btn btn-primary btn-block btn-flat" (click)="login()">Entrar</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
         </div>
         <!-- /.col -->
       </div>
     </form><br>
 
-    <a href="#">Esqueci a minha senha</a><br>
+    <a href="#" data-toggle="modal" data-target="#modal-default">Esqueci a minha senha</a><br>
 
   </div>
   <!-- /.login-box-body -->
+</div>
+
+<div class="modal fade" id="modal-default">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Recuperação de Senha</h4>
+      </div>
+      <form [formGroup]="formSenha" (ngSubmit)="forgot(); $event.preventDefault()">
+        <div class="modal-body">
+          <div [ngClass]="{'form-group': true, 'has-error': (formSenha.controls.email.errors && formSenha.controls.email.dirty), 'has-success': !formSenha.controls.email.errors}">
+            <label class="col-sm-2 control-label" for="email">E-mail: </label>
+            <div class="col-sm-10">
+              <input formControlName="email" class="form-control" type="email" placeholder="Email" autocomplete="off">
+              <span class="help-block" *ngIf="formSenha.controls.email.errors && formSenha.controls.email.dirty">Campo
+                obrigátorio</span>
+            </div>
+          </div>
+          <br />
+        </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="formSenha.invalid">Solicitar</button>
+      </div>
+    </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
 </div>
