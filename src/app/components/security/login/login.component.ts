@@ -15,10 +15,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class LoginComponent implements OnInit {
 
-  creds: CredenciaisDTO = {
-    email: '',
-    senha: ''
-  };
+  formLogin: FormGroup;
   formSenha: FormGroup;
   shared: SharedService;
 
@@ -32,21 +29,26 @@ export class LoginComponent implements OnInit {
     this.shared = SharedService.getInstance();
 
     this.formSenha = this.formBuilder.group({
-      email: ['',[Validators.required, Validators.email]]
+      email: [null,[Validators.required, Validators.email]]
+    });
+
+    this.formLogin = this.formBuilder.group({
+      email: [null,[Validators.required, Validators.email]],
+      senha:[null,[Validators.required]]
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   login() {
     this.spinner.show();
-    this.auth.authenticate(this.creds)
+    this.auth.authenticate(this.formLogin.value)
       .subscribe(response => {
         this.auth.successfullLogin(response.headers.get('Authorization'));
         this.shared.showTemplate.emit(true);
-        // window.location.reload();
-        // this.router.navigate(['']);
-        window.location.href = '';
+       // window.location.reload();
+        this.router.navigate(['/']);
+        // window.location.href = '/';
       },
         error => {
           if (error.status === 403) {

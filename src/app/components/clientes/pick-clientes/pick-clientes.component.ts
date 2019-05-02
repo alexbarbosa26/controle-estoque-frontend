@@ -7,12 +7,10 @@ import { ClienteDTO } from 'src/models/cliente.dto';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/services/domain/cart.service';
 import { UsuarioService } from 'src/services/domain/usuario.service';
-import { TrocaService } from 'src/services/domain/troca.service';
-import { UsuarioDTO } from 'src/models/usuario.dto';
 import { TrocasDTO } from 'src/models/trocas.dto';
 import { CartItem } from 'src/models/cart-item';
 import { StorageService } from 'src/services/storage.service';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pick-clientes',
@@ -88,7 +86,7 @@ export class PickClientesComponent implements OnInit {
           resp => {
             this.listCliente = resp;
 
-          }, error => { });
+          }, () => { });
 
       }
     );
@@ -104,7 +102,7 @@ export class PickClientesComponent implements OnInit {
           celula: null
         });
 
-      }, error => { });
+      }, () => { });
 
   }
 
