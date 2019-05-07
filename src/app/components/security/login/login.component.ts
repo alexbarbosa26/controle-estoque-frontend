@@ -1,6 +1,6 @@
+import { FieldMessage } from './../../../../models/fieldmessage';
 import { MessageService } from 'primeng/api';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CredenciaisDTO } from './../../../../models/credencias.dto';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/auth.service';
 import { Router } from '@angular/router';
@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   formSenha: FormGroup;
   shared: SharedService;
+  erros: FieldMessage[];
 
   constructor(
     private auth: AuthService,
@@ -29,16 +30,18 @@ export class LoginComponent implements OnInit {
     this.shared = SharedService.getInstance();
 
     this.formSenha = this.formBuilder.group({
-      email: [null,[Validators.required, Validators.email]]
+      email: [null, [Validators.required, Validators.email]]
     });
 
     this.formLogin = this.formBuilder.group({
-      email: [null,[Validators.required, Validators.email]],
-      senha:[null,[Validators.required]]
+      email: [null, [Validators.required, Validators.email]],
+      senha: [null, [Validators.required]]
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.refreshTokenUser();
+  }
 
   login() {
     this.spinner.show();
@@ -47,12 +50,15 @@ export class LoginComponent implements OnInit {
         this.auth.successfullLogin(response.headers.get('Authorization'));
         this.shared.showTemplate.emit(true);
        // window.location.reload();
-        this.router.navigate(['/']);
-        // window.location.href = '/';
+       // this.router.navigate(['/']);
+        window.location.href = '';
       },
         error => {
-          if (error.status === 403) {
-          }
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Acesso negado ou sem conexão com o Banco de dados.',
+            detail: ''
+          });
         });
 
     setTimeout(() => {
@@ -62,20 +68,43 @@ export class LoginComponent implements OnInit {
 
   }
 
-  forgot() {
-    console.log(this.formSenha.value)
-    this.auth.forgot(this.formSenha.value).subscribe(
-      response =>{
-        this.showInsertOk();
-      },
-      error => {}
-    )
+
+  refreshTokenUser() {
+    if (this.auth.storage.getLocalUser() !== null) {
+      this.auth.refreshToken()
+        .subscribe(response => {
+          this.auth.successfullLogin(response.headers.get('Authorization'));
+          this.shared.showTemplate.emit(true);
+          this.router.navigate(['']);
+
+        },
+          error => {
+            this.shared.showTemplate.emit(false);
+            this.router.navigate(['login']);
+          });
+    }
   }
+
+  forgot() {
+    this.auth.forgot(this.formSenha.value).subscribe(
+      response => {
+        this.showInsertOk();
+      }, error => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Email não encontrado!',
+          detail: ''
+        });
+
+      }
+    );
+  }
+
 
   showInsertOk() {
     this.messageService.add({
       severity: 'success',
-      summary: 'E-mail solicitado com sucesso !!!',
+      summary: 'Senha solicitada com sucesso !!!',
       detail: ''
     });
 

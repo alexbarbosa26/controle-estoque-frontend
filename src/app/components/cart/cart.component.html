@@ -31,7 +31,7 @@
                     <div class="ui-g-2 ui-sm-6">Nº INC: </div>
                     <div class="ui-g-10 ui-sm-6">
                         <input *ngIf="item.numeroChamado == '' " class="form-control input-sm" name="numeroChamado"
-                            type="text" [(ngModel)]="numeroChamado" style="max-width: 180px">
+                            type="text" [(ngModel)]="numeroChamado" style="max-width: 180px" autocomplete="off">
                         <span>{{item.numeroChamado}}</span>
                         <i *ngIf="item.numeroChamado == '' " (click)="chamado(item.produto)" class="pi pi-check-circle"
                             style="font-size: 2em; color:#34A835;"></i>

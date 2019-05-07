@@ -1,7 +1,7 @@
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#ffffff" type="ball-newton-cradle"></ngx-spinner>
 
 <app-header *ngIf="showTemplate"></app-header>
-<app-menu *ngIf="showTemplate"></app-menu>
+<app-menu [hidden]="!showTemplate"></app-menu>
 
 <div [ngClass]="showContentWrapper()" style="height: auto; min-height: 600px;">
 

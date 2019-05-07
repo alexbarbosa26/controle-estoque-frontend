@@ -2,7 +2,6 @@ import { AuthService } from './../services/auth.service';
 import { Component } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -17,9 +16,7 @@ export class AppComponent {
 
   constructor(
     private auth: AuthService,
-    private router: Router,
-    private spinner: NgxSpinnerService
-  ) {
+    private router: Router  ) {
     this.shared = SharedService.getInstance();
   }
 
@@ -44,7 +41,7 @@ export class AppComponent {
           this.router.navigate(['/']);
 
         },
-          error => {
+          () => {
             this.shared.showTemplate.emit(false);
             this.router.navigate(['/login']);
             window.location.reload();

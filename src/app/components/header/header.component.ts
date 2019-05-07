@@ -14,9 +14,7 @@ export class HeaderComponent implements OnInit {
     private storage: StorageService
   ) { }
 
-  ngOnInit() {
-    console.log();
-  }
+  ngOnInit() {}
 
   usuario() {
     return this.storage.getLocalUser().email;

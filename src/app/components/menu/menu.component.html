@@ -25,15 +25,15 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a routerLink="categorias"><i class="fa fa-circle-o"></i> Categorias</a></li>
+          <li *ngIf="user?.perfis == 'ADMIN'"><a routerLink="categorias"><i class="fa fa-circle-o"></i> Categorias</a></li>
           <li><a routerLink="celulas"><i class="fa fa-circle-o"></i> Células</a></li>
-          <li><a routerLink="clientes"><i class="fa fa-circle-o"></i> Clientes</a></li>
+          <li *ngIf="user?.perfis == 'ADMIN' || user?.perfis == 'MODERADOR'"><a routerLink="clientes"><i class="fa fa-circle-o"></i> Clientes</a></li>
           <li><a routerLink="produto"><i class="fa fa-circle-o"></i> Produtos</a></li>
-          <li><a routerLink="usuario"><i class="fa fa-circle-o"></i> Usuários</a></li>
-          <li><a routerLink="sites"><i class="fa fa-circle-o"></i> Sites</a></li>
+          <li *ngIf="user?.perfis == 'ADMIN'"><a routerLink="usuario"><i class="fa fa-circle-o"></i> Usuários</a></li>
+          <li *ngIf="user?.perfis == 'ADMIN'"><a routerLink="sites"><i class="fa fa-circle-o"></i> Sites</a></li>
         </ul>
       </li>
-      <li class="treeview">
+      <li class="treeview" *ngIf="user?.perfis == 'ADMIN' || user?.perfis == 'MODERADOR'">
           <a href="#">
             <i class="fa fa-table"></i> <span>Estoque</span>
             <span class="pull-right-container">
@@ -45,9 +45,9 @@
           </ul>
         </li>
 
-      <li class="treeview">
+      <li class="treeview" *ngIf="user?.perfis == 'ADMIN' || user?.perfis == 'MODERADOR'">
         <a [routerLink]="['/categorias-list']">
-          <i class="fa fa-plus-square"></i> <span>Categorias</span>          
+          <i class="fa fa-plus-square"></i> <span>Resgistrar Troca</span>          
         </a>
       </li>
       <li class="treeview">
@@ -60,7 +60,7 @@
           </a>
         </li>
 
-      <li class="treeview">
+      <li class="treeview" *ngIf="user?.perfis == 'ADMIN'">
         <a [routerLink]="['/profile']">
           <i class="fa fa-user"></i> <span>Perfil</span>          
         </a>

@@ -67,13 +67,16 @@ export class EditProdutosComponent implements OnInit {
         response => {
           this.produtos = response as unknown as ProdutoDTO;
           delete this.clonedProduto[prod.codigo];
+          this.messageService.clear();
           this.messageService.add({ severity: 'success', summary: 'Sucesso', detail: 'Produto Atualizado' });
         }, error => {
+          this.messageService.clear();
           this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Erro ao salvar o produto' });
         }
       );
 
     } else {
+      this.messageService.clear();
       this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Campo Obrigatório' });
     }
   }

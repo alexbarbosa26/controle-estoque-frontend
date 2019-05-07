@@ -51,8 +51,14 @@ export class ProdutoComponent implements OnInit {
       {label: 'cpu_dell_380', value: 'cpu_dell_380'},
       {label: 'cpu_dell_3020', value: 'cpu_dell_3020'},
       {label: 'cpu_dell_320', value: 'cpu_dell_320'},
+      {label: 'hp_prodesk600', value: 'hp_prodesk600'},
+      {label: 'positivo_d100', value: 'positivo_d100'},
+      {label: 'positivo_d360', value: 'positivo_d360'},
+      {label: 'positivo_d', value: 'positivo_d'},
       {label: 'teclado_usb', value: 'teclado_usb'},
       {label: 'mouse_usb', value: 'mouse_usb'},
+      {label: 'teclado_ps2', value: 'teclado_ps2'},
+      {label: 'mouse_ps2', value: 'mouse_ps2'},
       {label: 'hd', value: 'hd'},
       {label: 'cabo_forca', value: 'cabo_forca'},
       {label: 'memoria_ram', value: 'memoria_ram'},
@@ -68,7 +74,8 @@ export class ProdutoComponent implements OnInit {
       {label: 'cabo_de_rede', value: 'cabo_de_rede'},
       {label: 'monitor_dell_18.5', value: 'monitor_dell_18.5'},
       {label: 'aio_positivo', value: 'aio_positivo'},
-      {label: 'aio_lenovo', value: 'aio_lenovo'}
+      {label: 'aio_lenovo', value: 'aio_lenovo'},
+      {label: 'adaptador_antigo_para_novo', value: 'adaptador_antigo_para_novo'}
   ];
   }
 

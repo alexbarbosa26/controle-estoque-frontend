@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let localUser = this.storage.getLocalUser();
+    const localUser = this.storage.getLocalUser();
     if (localUser && localUser.email) {
       this.usuarioService.findByEmail(localUser.email)
         .subscribe(response => {
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
 
         },
           error => {
-            if (error.status == 403) {
+            if (error.status === 403) {
               this.router.navigate(['login']);
             }
           });
