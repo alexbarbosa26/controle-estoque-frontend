@@ -24,3 +24,39 @@
         <td>{{tr.celula.nome}}</td>
       </tr>
     </ng-template>
+    <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+      <tr *ngFor="let item of rowData.itens">
+        <td [attr.colspan]="columns.length + 1">
+          <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+            <div class="ui-g-12 ui-md-3" style="text-align:center">
+              <img width="150" [attr.alt]="item.produto.nome" src="assets/img/{{item.produto.imagem}}.png">
+            </div>
+            <div class="ui-g-12 ui-md-9">
+              <div class="ui-g">
+                <div class="ui-g-12">
+                  <b>Qtd Troca:</b> {{item.quantidadeTroca}}
+                </div>
+                <div class="ui-g-12">
+                  <b>Motivo:</b> {{item.motivo}}
+                </div>
+                <div class="ui-g-12">
+                  <b>Nº Chamado:</b> {{item.numeroChamado}}
+                </div>
+                <div class="ui-g-12">
+                  <b>Site:</b> {{item.produto.site.nome}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage" let-columns>
+        <tr>
+            <td [attr.colspan]="columns.length + 1">
+                Sua lista de trocas está vazia
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>
