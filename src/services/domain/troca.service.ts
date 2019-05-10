@@ -19,4 +19,8 @@ export class TrocaService {
             }
         );
     }
+
+    findByUsuario(page: number = 0, linesPerPage: number = 24) {
+        return this.http.get(`${API_CONFIG.baseURL}/trocas/page/?page=${page}&linesPerPage=${linesPerPage}`);
+    }
 }

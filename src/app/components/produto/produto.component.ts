@@ -75,6 +75,8 @@ export class ProdutoComponent implements OnInit {
       {label: 'monitor_dell_18.5', value: 'monitor_dell_18.5'},
       {label: 'aio_positivo', value: 'aio_positivo'},
       {label: 'aio_lenovo', value: 'aio_lenovo'},
+      {label: 'felitron_completo_rj', value: 'felitron_completo_rj'},
+      {label: 'felitron_cabo_treinamento', value: 'felitron_cabo_treinamento'},
       {label: 'adaptador_antigo_para_novo', value: 'adaptador_antigo_para_novo'}
   ];
   }

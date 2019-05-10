@@ -44,7 +44,6 @@ export class AppComponent {
           () => {
             this.shared.showTemplate.emit(false);
             this.router.navigate(['/login']);
-            window.location.reload();
           });
     }
   }

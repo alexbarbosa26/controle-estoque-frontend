@@ -26,6 +26,8 @@ import { CelulasComponent } from './components/celulas/celulas.component';
 import { PickClientesComponent } from './components/clientes/pick-clientes/pick-clientes.component';
 import { SignOutComponent } from './components/security/sign-out/sign-out.component';
 import { EditProdutosComponent } from './components/produto/edit-produtos/edit-produtos.component';
+import { TrocasComponent } from './components/trocas/trocas.component';
+
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { MessagesModule } from 'primeng/messages';
@@ -41,6 +43,7 @@ import { ChartModule } from 'primeng/chart';
 import { ListboxModule } from 'primeng/listbox';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -80,7 +83,8 @@ enableProdMode();
     CelulasComponent,
     PickClientesComponent,
     EditProdutosComponent,
-    SignOutComponent
+    SignOutComponent,
+    TrocasComponent
 
 
   ],
@@ -105,7 +109,8 @@ enableProdMode();
     ChartModule,
     ListboxModule,
     DropdownModule,
-    InputTextModule
+    InputTextModule,
+    InfiniteScrollModule
 
   ],
   providers: [
