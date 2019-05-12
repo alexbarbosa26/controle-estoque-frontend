@@ -48,7 +48,7 @@
       </li>
 
       <li class="treeview" *ngIf="user?.perfis == 'ADMIN' || user?.perfis == 'MODERADOR'">
-        <a>
+        <a href="#">
           <i class="fa fa-table"></i> <span>Listas</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
@@ -56,6 +56,18 @@
         </a>
         <ul class="treeview-menu">
           <li><a [routerLink]="['/trocas']"><i class="fa fa-circle-o"></i> Lista de Trocas</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-line-chart"></i> <span>Dashboard</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['/dashboard-trocas']"><i class="fa fa-circle-o"></i>Trocas</a></li>
         </ul>
       </li>
 

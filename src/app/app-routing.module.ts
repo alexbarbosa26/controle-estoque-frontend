@@ -18,6 +18,7 @@ import { PickClientesComponent } from './components/clientes/pick-clientes/pick-
 import { SignOutComponent } from './components/security/sign-out/sign-out.component';
 import { EditProdutosComponent } from './components/produto/edit-produtos/edit-produtos.component';
 import { TrocasComponent } from './components/trocas/trocas.component';
+import { DashboardTrocasComponent } from './components/trocas/dashboard-trocas/dashboard-trocas.component';
 
 const routes: Routes = [
 {path: '', pathMatch: 'full', component: HomeComponent, canActivate: [AuthGuard]},
@@ -36,7 +37,9 @@ const routes: Routes = [
 {path: 'pick-clientes/:troca', component: PickClientesComponent, canActivate: [AuthGuard]},
 {path: 'edit-produtos', component: EditProdutosComponent, canActivate: [AuthGuard]},
 {path: 'logout', component: SignOutComponent},
-{path: 'trocas', component: TrocasComponent, canActivate: [AuthGuard]}];
+{path: 'trocas', component: TrocasComponent, canActivate: [AuthGuard]},
+{path: 'dashboard-trocas', component: DashboardTrocasComponent, canActivate: [AuthGuard]}
+];
 
 @NgModule({
   imports: [
