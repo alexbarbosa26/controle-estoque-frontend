@@ -13,7 +13,7 @@ export class ClienteService {
     ) {}
 
     findAll(): Observable<ClienteDTO[]> {
-        return this.http.get<ClienteDTO[]>(`${API_CONFIG.baseURL}/produtos/list-produto`);
+        return this.http.get<ClienteDTO[]>(`${API_CONFIG.baseURL}/clientes/list-cliente`);
     }
 
     insert(obj: ClienteDTO) {

@@ -1,3 +1,5 @@
+import { ClienteDTO } from 'src/models/cliente.dto';
+import { ClienteService } from 'src/services/domain/cliente.service';
 import { Component, OnInit } from '@angular/core';
 import { TrocaService } from 'src/services/domain/troca.service';
 
@@ -13,19 +15,27 @@ export class DashboardTrocasComponent implements OnInit {
   barChart: any;
   options: any;
   sortKey: string;
+  cliente: ClienteDTO[];
 
   constructor(
-    private trocaService: TrocaService
+    private trocaService: TrocaService,
+    private clienteService: ClienteService
   ) { }
 
   ngOnInit() {
-    this.sortOptions = [
-      { label: 'TODOS', value: '' },
-      { label: 'NET', value: 'NET' },
-      { label: 'NEOENERGIA', value: 'NEOENERGIA' },
-      { label: 'CIELO', value: 'CIELO' },
-      { label: 'TIM', value: 'TIM' }
-    ];
+    this.getClientes();
+  }
+
+  getClientes() {
+    this.clienteService.findAll().subscribe(
+      response => {
+        
+        this.sortOptions = [];
+        for(let i=0; i < response.length; i++){
+          
+          this.sortOptions.push({label: response[i].nome, value: response[i].nome})
+        }
+      });
   }
 
   graficoBarra() {
@@ -55,14 +65,14 @@ export class DashboardTrocasComponent implements OnInit {
                   ticks: {
                       stacked: true,
                       beginAtZero: true,
-                      fontSize: 10
+                      fontSize: 14
                   }
               }],
               xAxes: [{
                   ticks: {
                       stacked: true,
                       beginAtZero: true,
-                      fontSize: 10
+                      fontSize: 14
                   }
               }]
           },
