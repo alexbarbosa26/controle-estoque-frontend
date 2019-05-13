@@ -2,6 +2,7 @@ import { ClienteDTO } from 'src/models/cliente.dto';
 import { ClienteService } from 'src/services/domain/cliente.service';
 import { Component, OnInit } from '@angular/core';
 import { TrocaService } from 'src/services/domain/troca.service';
+import { SitesService } from 'src/services/domain/sites.service';
 
 @Component({
   selector: 'app-dashboard-trocas',
@@ -12,34 +13,60 @@ export class DashboardTrocasComponent implements OnInit {
 
 
   sortOptions: any[];
+  sitesOptions: any[];
+  diasOptions: any[];
   barChart: any;
   options: any;
-  sortKey: string;
+  sortKey: any;
+  sortSite: any;
+  sortDia: any = 30;
   cliente: ClienteDTO[];
 
   constructor(
     private trocaService: TrocaService,
-    private clienteService: ClienteService
+    private clienteService: ClienteService,
+    private sitesService: SitesService
   ) { }
 
   ngOnInit() {
-    this.getClientes();
+    this.getSites();
+    this.getPeriodo();
+  }
+
+  getPeriodo() {
+    this.diasOptions = [
+      {label: 'Hoje', value: 0},
+      {label: '7 Dias', value: 7},
+      {label: '15 Dias', value: 15},
+      {label: '30 Dias', value: 30}
+    ];
   }
 
   getClientes() {
-    this.clienteService.findAll().subscribe(
+    this.clienteService.findByClienteAndSiteAndSituacao(this.sortSite).subscribe(
       response => {
-        
+
         this.sortOptions = [];
-        for(let i=0; i < response.length; i++){
-          
-          this.sortOptions.push({label: response[i].nome, value: response[i].nome})
+        this.sortOptions.push({label: 'TODOS', value: ''});
+        for (let i =  0; i < response.length; i++) {
+          this.sortOptions.push({label: response[i].nome, value: response[i].nome});
         }
       });
   }
 
+  getSites() {
+    this.sitesService.findAll().subscribe(
+      response => {
+        this.sitesOptions = [];
+        for (let i = 0; i < response.length; i++) {
+            this.sitesOptions.push({label: response[i].nome, value: response[i].codigo});
+        }
+      }
+    );
+  }
+
   graficoBarra() {
-    this.trocaService.dashboardTrocas(this.sortKey, 1).subscribe(
+    this.trocaService.dashboardTrocas(this.sortKey, this.sortSite, this.sortDia).subscribe(
       (response: any) => {
         const lab = new Array();
         const dat = new Array();
@@ -52,7 +79,7 @@ export class DashboardTrocasComponent implements OnInit {
         this.barChart = {
           labels: lab,
           datasets: [{
-              label: 'QTD',
+              label: this.sortKey,
               data: dat,
               borderColor: '#2272B4',
               backgroundColor: '#2555A3'

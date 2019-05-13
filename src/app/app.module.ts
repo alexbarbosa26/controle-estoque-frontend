@@ -44,6 +44,7 @@ import { ListboxModule } from 'primeng/listbox';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ToolbarModule } from 'primeng/toolbar';
 
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
@@ -112,7 +113,8 @@ enableProdMode();
     ListboxModule,
     DropdownModule,
     InputTextModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    ToolbarModule
 
   ],
   providers: [

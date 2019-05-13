@@ -24,7 +24,7 @@ export class TrocaService {
         return this.http.get(`${API_CONFIG.baseURL}/trocas/page/?page=${page}&linesPerPage=${linesPerPage}`);
     }
 
-    dashboardTrocas(clienteId: string, siteId: number) {
-        return this.http.get(`${API_CONFIG.baseURL}/trocas/motivo/${siteId}/?cliente=${clienteId}`)
+    dashboardTrocas(clienteId: string, siteId: number, periodo: number) {
+        return this.http.get(`${API_CONFIG.baseURL}/trocas/motivo/${siteId}/${periodo}/?cliente=${clienteId}`);
     }
 }

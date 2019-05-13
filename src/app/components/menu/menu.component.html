@@ -59,7 +59,7 @@
         </ul>
       </li>
 
-      <li class="treeview">
+      <li class="treeview" *ngIf="user?.perfis == 'ADMIN'">
         <a href="#">
           <i class="fa fa-line-chart"></i> <span>Dashboard</span>
           <span class="pull-right-container">
