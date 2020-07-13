@@ -1,41 +1,8 @@
-
 <h1>
   Dashboard de Trocas
 </h1>
 <div class="col-md-12">
-    <p-toolbar>
-        <div class="ui-toolbar-group-left">
-            <p-dropdown style="margin-right: .30em" [options]="sitesOptions" [(ngModel)]="sortSite" placeholder="Escolha o Site"
-            (onChange)="getClientes()" [style]="{'max-width':'150px'}"></p-dropdown>
 
-          <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey"
-            placeholder="Escolha o Cliente" (onChange)="graficoBarra()" [style]="{'max-width':'150px'}"></p-dropdown>      
-          
-        </div>
-        <div class="ui-toolbar-group-right">
-            <p-dropdown [options]="diasOptions" [(ngModel)]="sortDia"
-            placeholder="Escolha o Período" (onChange)="graficoBarra()" [style]="{'max-width':'150px'}"></p-dropdown>
+  <iframe width="100%" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiZjhhODRlODUtZGMwYS00MzIxLTk3ZTMtZTU4MjE3NWM3MzNjIiwidCI6IjY1M2RjNWI0LWEwZGYtNGNlYy1hZjdkLWE5NmM1MzA1NzM5ZSJ9" frameborder="0" allowFullScreen="true"></iframe>
 
-        </div>
-      </p-toolbar>
-  <div class="box box-primary">
-    <div class="box-header with-border">
-      <div class="ui-helper-clearfix">
-        <div class="ui-g">
-          <div class="ui-g-12 ui-md-4">
-
-
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="box-body">
-      <div class="chart">
-        <p-chart type="bar" [data]="barChart" [options]="options" [responsive]="true"></p-chart>
-      </div>
-    </div>
-    <!-- /.box-body -->
-  </div>
 </div>

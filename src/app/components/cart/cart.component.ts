@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
       {name: 'Defeito Técnico'},
       {name: 'Mau Uso'},
       {name: 'Reposição'},
-      {name: 'Configuração'},
+      {name: 'Crescimento'},
       {name: 'Projeto'}
   ];
   }

@@ -28,7 +28,7 @@ export class CelulasComponent implements OnInit {
     private messageService: MessageService
   ) {
     this.formulario = this.formBuilder.group({
-      nome: ['', [Validators.required, Validators.minLength(3)]],
+      nome: ['', [Validators.required, Validators.minLength(2)]],
       pep: ['00000-00'],
       cliente_cod: ['', [Validators.required]]
     });

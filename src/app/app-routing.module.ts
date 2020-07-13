@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
@@ -43,7 +45,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   exports: [RouterModule]
 })

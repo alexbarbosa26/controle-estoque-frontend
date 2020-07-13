@@ -48,7 +48,7 @@
         <div [ngClass]="{'form-group': true, 'has-error': (formulario.controls.imagem.errors && formulario.controls.imagem.dirty), 'has-success': !formulario.controls.imagem.errors}">
           <label class="col-sm-2 control-label" for="imagem">Imagem </label>
           <div class="col-sm-10">
-            <p-dropdown id="imagem" placeholder="Escolha uma Imagem" [options]="produtos" filter="true" [style]="{'width':'270px'}" formControlName="imagem" [showClear]="true">
+            <p-dropdown id="imagem" placeholder="Escolha uma Imagem" [options]="produtos" filter="true" [style]="{'width':'300px'}" formControlName="imagem" [showClear]="true">
               <ng-template let-item pTemplate="selectedItem">
                 <img src="assets/img/{{item.label}}.png" style="width:20px;vertical-align:middle" />
                 <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>

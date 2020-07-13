@@ -60,8 +60,10 @@ export class ProdutoComponent implements OnInit {
       {label: 'teclado_ps2', value: 'teclado_ps2'},
       {label: 'mouse_ps2', value: 'mouse_ps2'},
       {label: 'hd', value: 'hd'},
+      {label: 'hd_mini', value: 'hd_mini'},
       {label: 'cabo_forca', value: 'cabo_forca'},
       {label: 'memoria_ram', value: 'memoria_ram'},
+      {label: 'aparelho_avaya_4602sw', value: 'aparelho_avaya_4602sw'},
       {label: 'aparelho_avaya', value: 'aparelho_avaya'},
       {label: 'switch', value: 'switch'},
       {label: 'switch_core', value: 'switch_core'},
@@ -77,7 +79,26 @@ export class ProdutoComponent implements OnInit {
       {label: 'aio_lenovo', value: 'aio_lenovo'},
       {label: 'felitron_completo_rj', value: 'felitron_completo_rj'},
       {label: 'felitron_cabo_treinamento', value: 'felitron_cabo_treinamento'},
-      {label: 'adaptador_antigo_para_novo', value: 'adaptador_antigo_para_novo'}
+      {label: 'adaptador_antigo_para_novo', value: 'adaptador_antigo_para_novo'},
+      {label: 'toner_xerox_3325', value: 'toner_xerox_3325'},
+      {label: 'toner_xerox_3635', value: 'toner_xerox_3635'},
+      {label: 'toner_xerox_4600_metered', value: 'toner_xerox_4600_metered'},
+      {label: 'cilindro_xerox_4600', value: 'cilindro_xerox_4600'},
+      {label: 'cera_xerox_ciano_8900', value: 'cera_xerox_ciano_8900'},
+      {label: 'cera_xerox_magenta_8900', value: 'cera_xerox_magenta_8900'},
+      {label: 'cera_xerox_yellow_8900', value: 'cera_xerox_yellow_8900'},
+      {label: 'cera_xerox_black_8900', value: 'cera_xerox_black_8900'},
+      {label: 'coletora_xerox_residuos_8570', value: 'coletora_xerox_residuos_8570'},
+      {label: 'kit_manutencao_xerox_8570', value: 'kit_manutencao_xerox_8570'},
+      {label: 'cilindro_xerox_fotorreceptor', value: 'cilindro_xerox_fotorreceptor'},
+      {label: 'toner_xerox_5500', value: 'toner_xerox_5500'},
+      {label: 'cilindro_xerox_fotorreceptor_5500', value: 'cilindro_xerox_fotorreceptor_5500'},
+      {label: 'kit_xerox_5500', value: 'kit_xerox_5500'},
+      {label: 'cera_xerox_black_8570', value: 'cera_xerox_black_8570'},
+      {label: 'cera_xerox_ciano_8570', value: 'cera_xerox_ciano_8570'},
+      {label: 'cera_xerox_magenta_8570', value: 'cera_xerox_magenta_8570'},
+      {label: 'cera_xerox_yellow_8570', value: 'cera_xerox_yellow_8570'},
+      {label: 'cygnus_usb_completo', value: 'cygnus_usb_completo'}
   ];
   }
 
