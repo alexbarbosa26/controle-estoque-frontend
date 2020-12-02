@@ -1,10 +1,10 @@
 import { SitesDTO } from './../../../models/sites.dto';
 import { StorageService } from 'src/services/storage.service';
-import { MessageService } from 'primeng/components/common/messageservice';
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'src/services/domain/dashboard.service';
 import { UsuarioService } from 'src/services/domain/usuario.service';
 import { UsuarioDTO } from 'src/models/usuario.dto';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
