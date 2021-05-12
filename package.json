@@ -25,7 +25,7 @@
     "angular-jwt": "^0.1.11",
     "angular-notifier": "^6.0.1",
     "angular2-jwt": "^0.2.3",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
     "http-server": "^0.12.3",
